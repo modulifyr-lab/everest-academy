@@ -6,10 +6,17 @@ A modern, responsive website for Everest Academy - a prestigious Cambridge Inter
 
 Everest Academy provides world-class Cambridge education rooted in Nepali identity. The website features information about academic programs, admissions, faculty, student life, and news/events.
 
+## Tier Level: 2 (Business)
+
+This site is a **Tier 2 Launch Kit** (Business tier):
+- 8 pages total
+- Soft animations: scroll reveals, hover states, smooth transitions
+- Clean, professional design suitable for service businesses, professional portfolios, and small corporate sites
+
 ## Features
 
 - **Responsive Design**: Works on all devices from mobile to desktop
-- **Smooth Animations**: Powered by GSAP for elegant transitions
+- **Soft Animations**: Powered by GSAP for elegant transitions
 - **Sections**:
   - Home page with hero, stats, programs, faculty, and events
   - About Us
@@ -18,6 +25,7 @@ Everest Academy provides world-class Cambridge education rooted in Nepali identi
   - Faculty
   - Student Life
   - News & Events
+  - Contact Us
 
 ## Pages
 
@@ -28,6 +36,7 @@ Everest Academy provides world-class Cambridge education rooted in Nepali identi
 - [faculty.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/faculty.html) - Faculty directory
 - [student-life.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/student-life.html) - Student life and activities
 - [news.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/news.html) - News and events
+- [contact.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/contact.html) - Contact information and enquiry form
 
 ## Technologies Used
 
