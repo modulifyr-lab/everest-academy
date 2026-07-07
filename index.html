@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everest Academy | World-Class Education in Kathmandu, Nepal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+:root{--navy:#0F2240;--navy-mid:#1a3a5c;--gold:#C9973A;--gold-light:#E8B84B;--green:#2D6A4F;--bg:#F4F6F8;--white:#fff;--text:#1A1A2E;--muted:#64748B;--border:#E2E8F0}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.25rem 0;transition:all .3s}
+nav.scrolled{background:rgba(15,34,64,.97);backdrop-filter:blur(12px);padding:.85rem 0;box-shadow:0 4px 30px rgba(0,0,0,.18)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;line-height:1.1}
+.logo-text span{display:block;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:.55rem 1.3rem;border-radius:6px;font-weight:700!important;transition:background .2s,transform .15s!important}
+.nav-cta:hover{background:var(--gold-light)!important;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:all .3s;border-radius:2px}
+.mob-menu{display:none;position:fixed;inset:0;top:0;background:var(--navy);z-index:999;padding:5rem 2rem 2rem;flex-direction:column;gap:0}
+.mob-menu.open{display:flex}
+.mob-menu a{color:#fff;text-decoration:none;font-family:'Playfair Display',serif;font-size:1.6rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(155deg,#0F2240 0%,#1a3a5c 45%,#0d3d2a 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:5rem}
+.hero-dots{position:absolute;inset:0;opacity:.12}
+.hero-content{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 2rem 8rem}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,151,58,.12);border:1px solid rgba(201,151,58,.28);color:var(--gold);padding:.4rem 1rem;border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.75rem;opacity:0;transform:translateY(20px)}
+.hero h1{font-size:clamp(2.75rem,5.5vw,5.25rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-.02em;max-width:820px;margin-bottom:1.5rem;opacity:0;transform:translateY(30px)}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:1.1rem;color:rgba(255,255,255,.68);max-width:560px;line-height:1.8;margin-bottom:2.5rem;opacity:0;transform:translateY(20px)}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(20px)}
+.btn-gold{background:var(--gold);color:var(--navy);padding:.9rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;letter-spacing:.01em}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 25px rgba(201,151,58,.35)}
+.btn-ghost{background:transparent;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;border:2px solid rgba(255,255,255,.25);transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-ghost:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.08)}
+.hero-trust{display:flex;gap:2rem;margin-top:3.5rem;flex-wrap:wrap;opacity:0;transform:translateY(15px)}
+.trust-item{display:flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.55);font-size:.78rem}
+.trust-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.mountain-hero{position:absolute;bottom:0;left:0;width:100%;z-index:1;line-height:0}
+
+/* STATS */
+.stats{background:var(--navy);padding:3.25rem 0}
+.stats-grid{max-width:1280px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.stat{text-align:center;padding:1.25rem;border-right:1px solid rgba(255,255,255,.07)}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:.3rem}
+.stat-lbl{color:rgba(255,255,255,.55);font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase}
+
+/* GENERAL SECTIONS */
+.section{padding:5.5rem 0}
+.section-white{background:#fff}
+.container{max-width:1280px;margin:0 auto;padding:0 2rem}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.section-h{font-size:clamp(1.9rem,3.5vw,2.85rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem}
+.section-p{color:var(--muted);font-size:1rem;line-height:1.8;max-width:580px}
+
+/* PROGRAMS */
+.programs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.prog-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:2.25rem;transition:all .3s;position:relative;overflow:hidden;cursor:default}
+.prog-card::after{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold);transform:scaleY(0);transition:transform .3s;transform-origin:bottom}
+.prog-card:hover{transform:translateY(-4px);box-shadow:0 20px 55px rgba(15,34,64,.1);border-color:rgba(201,151,58,.3)}
+.prog-card:hover::after{transform:scaleY(1)}
+.prog-icon{font-size:1.75rem;margin-bottom:1rem;display:block}
+.prog-age{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.prog-card h3{font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:.6rem}
+.prog-card p{color:var(--muted);font-size:.875rem;line-height:1.72;margin-bottom:1.25rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.tag{background:rgba(15,34,64,.06);color:var(--navy);padding:.28rem .7rem;border-radius:100px;font-size:.7rem;font-weight:500}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.why-card{padding:1.75rem 0;border-top:2px solid var(--border);transition:border-color .3s}
+.why-card:hover{border-color:var(--gold)}
+.why-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:rgba(201,151,58,.13);line-height:1;margin-bottom:.75rem;transition:color .3s}
+.why-card:hover .why-num{color:rgba(201,151,58,.28)}
+.why-card h3{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.why-card p{color:var(--muted);font-size:.85rem;line-height:1.72}
+
+/* FACULTY */
+.faculty-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-top:3rem}
+.faculty-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s}
+.faculty-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(15,34,64,.12)}
+.faculty-img{height:200px;display:flex;align-items:center;justify-content:center;position:relative}
+.f-initials{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:rgba(255,255,255,.45)}
+.faculty-body{padding:1.4rem}
+.faculty-body h4{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.f-title{font-size:.75rem;color:var(--gold);font-weight:600;margin-bottom:.6rem}
+.faculty-body p{font-size:.82rem;color:var(--muted);line-height:1.65}
+
+/* EVENTS */
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.event-card{background:#fff;border-radius:12px;padding:1.5rem;border:1px solid var(--border);transition:all .25s;display:flex;gap:1.1rem;align-items:flex-start}
+.event-card:hover{border-color:var(--gold);box-shadow:0 8px 28px rgba(201,151,58,.1)}
+.event-date-box{flex-shrink:0;width:50px;height:56px;background:var(--navy);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.e-day{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--gold);line-height:1}
+.e-mon{font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.event-card h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+.event-card p{font-size:.78rem;color:var(--muted);line-height:1.55}
+
+/* CTA BAND */
+.cta-band{background:linear-gradient(130deg,var(--navy) 0%,#1a3a5c 100%);padding:5.5rem 0;position:relative;overflow:hidden;text-align:center}
+.cta-band::before{content:'';position:absolute;right:-5%;top:-50%;width:500px;height:500px;background:radial-gradient(circle,rgba(201,151,58,.1) 0%,transparent 70%)}
+.cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 2rem}
+.cta-inner h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:1rem}
+.cta-inner p{color:rgba(255,255,255,.68);font-size:1rem;line-height:1.8;margin-bottom:2.25rem}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:#080f1c;color:#fff;padding:4rem 0 2rem}
+.footer-grid{max-width:1280px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{color:rgba(255,255,255,.45);font-size:.845rem;line-height:1.75;margin-top:.85rem;max-width:270px}
+.footer-col h5{font-family:'Inter',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.845rem;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bot{max-width:1280px;margin:2.5rem auto 0;padding:1.25rem 2rem 0;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.footer-bot p{color:rgba(255,255,255,.3);font-size:.75rem}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* SECTION DIVIDERS */
+.divider-up{display:block;width:100%;line-height:0;margin-bottom:-1px}
+.divider-dn{display:block;width:100%;line-height:0;margin-top:-1px}
+
+/* FLEX HEADER ROW */
+.sec-header-row{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:0}
+.link-arrow{display:inline-flex;align-items:center;gap:.4rem;color:var(--navy);text-decoration:none;font-size:.85rem;font-weight:600;border:1.5px solid var(--border);border-radius:7px;padding:.5rem 1.1rem;transition:all .2s}
+.link-arrow:hover{border-color:var(--gold);color:var(--gold)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .programs-grid,.why-grid,.faculty-grid,.events-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.07)}
+}
+@media(max-width:768px){
+  .nav-links{display:none}.hamburger{display:flex}
+  .programs-grid,.why-grid,.faculty-grid,.events-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+<div class="nav-inner">
+  <a href="index.html" class="logo">
+    <svg width="38" height="38" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="10" fill="rgba(201,151,58,.14)"/><path d="M7 33L14 15l7 12 7-16 7 21" fill="none" stroke="#C9973A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><line x1="7" y1="33" x2="35" y2="33" stroke="#C9973A" stroke-width="1.5"/></svg>
+    <div class="logo-text">Everest Academy<span>Kathmandu, Nepal · Est. 2003</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="academics.html">Academics</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="faculty.html">Faculty</a></li>
+    <li><a href="student-life.html">Student Life</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMob()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+</nav>
+
+<div class="mob-menu" id="mob">
+  <a href="index.html" onclick="toggleMob()">Home</a>
+  <a href="about.html" onclick="toggleMob()">About</a>
+  <a href="academics.html" onclick="toggleMob()">Academics</a>
+  <a href="admissions.html" onclick="toggleMob()">Admissions</a>
+  <a href="faculty.html" onclick="toggleMob()">Faculty</a>
+  <a href="student-life.html" onclick="toggleMob()">Student Life</a>
+  <a href="news.html" onclick="toggleMob()">News</a>
+  <a href="contact.html" onclick="toggleMob()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots">
+    <svg width="100%" height="100%"><defs><pattern id="dots" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(255,255,255,.35)"/></pattern></defs><rect width="100%" height="100%" fill="url(#dots)"/></svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge" id="hb">🏔 Cambridge Certified · IGCSE & A-Levels · Grade N–12</div>
+    <h1 id="ht">Where Nepal's <em>Next Generation</em> Takes Shape</h1>
+    <p class="hero-desc" id="hd">Everest Academy provides world-class Cambridge education rooted in Nepali identity. We prepare students not just for examinations, but for a lifetime of purpose-driven achievement.</p>
+    <div class="hero-btns" id="hbtn">
+      <a href="admissions.html" class="btn-gold">Apply for 2025–26 →</a>
+      <a href="contact.html" class="btn-ghost">Schedule a Campus Visit</a>
+    </div>
+    <div class="hero-trust" id="htrust">
+      <div class="trust-item"><span class="trust-dot"></span>Cambridge International Certified</div>
+      <div class="trust-item"><span class="trust-dot"></span>98% University Placement Rate</div>
+      <div class="trust-item"><span class="trust-dot"></span>English Medium Since 2003</div>
+      <div class="trust-item"><span class="trust-dot"></span>Smart Classrooms & Labs</div>
+    </div>
+  </div>
+  <!-- Signature mountain silhouette -->
+  <svg class="mountain-hero" viewBox="0 0 1440 190" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,190 L0,155 L80,100 L160,138 L250,75 L340,118 L430,52 L510,92 L600,28 L680,70 L760,12 L840,58 L930,4 L1010,50 L1100,18 L1180,65 L1270,32 L1360,78 L1440,48 L1440,190Z" fill="rgba(255,255,255,.045)"/>
+    <path d="M0,190 L0,165 L110,125 L220,155 L340,105 L450,140 L560,82 L660,120 L760,60 L860,100 L960,45 L1060,88 L1160,55 L1260,95 L1360,68 L1440,105 L1440,190Z" fill="rgba(255,255,255,.03)"/>
+    <path d="M0,190 L0,190 L1440,190 L1440,172 L1300,148 L1160,165 L1020,144 L880,162 L740,140 L600,160 L460,136 L320,156 L180,132 L80,150 L0,132Z" fill="#F4F6F8"/>
+  </svg>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+<div class="stats-grid">
+  <div class="stat"><div class="stat-num" data-target="850">0</div><div class="stat-lbl">Students Enrolled</div></div>
+  <div class="stat"><div class="stat-num" data-target="52">0</div><div class="stat-lbl">Qualified Teachers</div></div>
+  <div class="stat"><div class="stat-num" data-target="22">0</div><div class="stat-lbl">Years of Excellence</div></div>
+  <div class="stat"><div class="stat-num" data-target="98" data-suffix="%">0</div><div class="stat-lbl">University Placement</div></div>
+</div>
+</section>
+
+<svg class="divider-up" viewBox="0 0 1440 55" preserveAspectRatio="none" style="background:var(--navy);display:block">
+<path d="M0,55 L0,38 L90,18 L180,36 L280,10 L370,30 L460,6 L550,24 L640,2 L730,20 L820,0 L910,18 L1000,3 L1090,22 L1180,5 L1270,24 L1360,8 L1440,26 L1440,55Z" fill="#F4F6F8"/>
+</svg>
+
+<!-- ACADEMIC PROGRAMMES -->
+<section class="section">
+<div class="container">
+  <div class="sec-header-row reveal">
+    <div>
+      <p class="eyebrow">Academic Programmes</p>
+      <h2 class="section-h">A Curriculum Built for<br>Global Citizens</h2>
+      <p class="section-p">From early childhood through A-Levels, our Cambridge-aligned curriculum ensures every student is prepared for the world's leading universities.</p>
+    </div>
+  </div>
+  <div class="programs-grid">
+    <div class="prog-card reveal">
+      <span class="prog-icon">🌱</span>
+      <div class="prog-age">Ages 3–5 · Nursery & Kindergarten</div>
+      <h3>Early Years Foundation</h3>
+      <p>Play-based discovery with Montessori-influenced structure. We build curiosity, language foundations, and social confidence before formal schooling begins.</p>
+      <div class="tags"><span class="tag">Montessori Activities</span><span class="tag">Bilingual Start</span><span class="tag">Social Development</span></div>
+    </div>
+    <div class="prog-card reveal">
+      <span class="prog-icon">📖</span>
+      <div class="prog-age">Ages 6–11 · Grades 1–5</div>
+      <h3>Cambridge Primary</h3>
+      <p>A rigorous foundation in English, Mathematics, and Sciences aligned to Cambridge Primary standards. Students build analytical thinking and strong academic habits.</p>
+      <div class="tags"><span class="tag">Cambridge Primary</span><span class="tag">Mathematics Focus</span><span class="tag">Science Labs</span></div>
+    </div>
+    <div class="prog-card reveal">
+      <span class="prog-icon">🔬</span>
+      <div class="prog-age">Ages 12–16 · Grades 6–10</div>
+      <h3>Cambridge IGCSE</h3>
+      <p>Internationally recognised across 160 countries. Students select from 18 subjects across sciences, humanities, languages, and arts. The gold standard in secondary education.</p>
+      <div class="tags"><span class="tag">IGCSE Certified</span><span class="tag">18 Subjects</span><span class="tag">University Prep</span></div>
+    </div>
+    <div class="prog-card reveal">
+      <span class="prog-icon">🎓</span>
+      <div class="prog-age">Ages 17–18 · Grades 11–12</div>
+      <h3>Cambridge A-Levels</h3>
+      <p>Advanced Levels in Science, Commerce, and Humanities streams. Our 2024 cohort received placements at institutions in the UK, USA, Australia, and India.</p>
+      <div class="tags"><span class="tag">A-Levels</span><span class="tag">Career Counselling</span><span class="tag">Global Placements</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="section section-white">
+<div class="container">
+  <div class="reveal">
+    <p class="eyebrow">Why Choose Us</p>
+    <h2 class="section-h">Education That Goes<br>Beyond the Classroom</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal"><div class="why-num">01</div><h3>Small Class Sizes</h3><p>Our 1:18 teacher-to-student ratio ensures every child receives individual attention. No student is left behind, and no potential goes unnoticed.</p></div>
+    <div class="why-card reveal"><div class="why-num">02</div><h3>Postgraduate Faculty</h3><p>Over 70% of our teaching staff hold postgraduate qualifications, trained under Cambridge International Teacher Development programmes.</p></div>
+    <div class="why-card reveal"><div class="why-num">03</div><h3>World-Class Facilities</h3><p>Air-conditioned smart classrooms, three science labs, a 10,000-volume library, dedicated computer lab, and a multi-use sports complex.</p></div>
+    <div class="why-card reveal"><div class="why-num">04</div><h3>Strong Values</h3><p>Academic achievement never comes at the cost of character. Our pastoral programme develops integrity, empathy, and community responsibility.</p></div>
+    <div class="why-card reveal"><div class="why-num">05</div><h3>Safe Campus</h3><p>24/7 CCTV coverage, a dedicated student welfare team, structured transportation, and a zero-tolerance bullying policy across all year groups.</p></div>
+    <div class="why-card reveal"><div class="why-num">06</div><h3>Proven Track Record</h3><p>2024 graduates received offers from Kathmandu University, UK universities, Australian institutions, and US liberal arts colleges.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- FACULTY SPOTLIGHT -->
+<section class="section">
+<div class="container">
+  <div class="sec-header-row reveal">
+    <div><p class="eyebrow">Meet Our Teachers</p><h2 class="section-h">Faculty Who Actually Care</h2></div>
+    <a href="faculty.html" class="link-arrow">View All Faculty →</a>
+  </div>
+  <div class="faculty-grid">
+    <div class="faculty-card reveal">
+      <div class="faculty-img" style="background:linear-gradient(135deg,#0F2240,#2D6A4F)"><div class="f-initials">SP</div></div>
+      <div class="faculty-body"><h4>Ms. Sunita Pradhan</h4><div class="f-title">Head of Sciences · 14 Years Experience</div><p>M.Sc. Chemistry, Tribhuvan University. Cambridge-certified trainer. Her students have won three consecutive National Science Olympiad medals.</p></div>
+    </div>
+    <div class="faculty-card reveal">
+      <div class="faculty-img" style="background:linear-gradient(135deg,#1a3a5c,#0F2240)"><div class="f-initials">RK</div></div>
+      <div class="faculty-body"><h4>Mr. Ramesh Karki</h4><div class="f-title">Head of Mathematics · 11 Years Experience</div><p>M.Ed. Mathematics, Kathmandu University. Developed our Foundations First numeracy programme, improving Grade 8 scores by 34% in two years.</p></div>
+    </div>
+    <div class="faculty-card reveal">
+      <div class="faculty-img" style="background:linear-gradient(135deg,#2D6A4F,#1a3a5c)"><div class="f-initials">AS</div></div>
+      <div class="faculty-body"><h4>Ms. Anisha Shrestha</h4><div class="f-title">Head of English · 9 Years Experience</div><p>B.A. English Literature, IOST. Her students have represented Nepal in two South Asian Model United Nations conferences.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="section section-white">
+<div class="container">
+  <div class="sec-header-row reveal">
+    <div><p class="eyebrow">School Calendar</p><h2 class="section-h">Upcoming Events</h2></div>
+    <a href="news.html" class="link-arrow">View All Events →</a>
+  </div>
+  <div class="events-grid">
+    <div class="event-card reveal">
+      <div class="event-date-box"><div class="e-day">14</div><div class="e-mon">Aug</div></div>
+      <div><h4>Open Day & Campus Tour</h4><p>Prospective families invited to tour campus, meet faculty, and speak with admissions. 9 AM – 1 PM.</p></div>
+    </div>
+    <div class="event-card reveal">
+      <div class="event-date-box"><div class="e-day">22</div><div class="e-mon">Aug</div></div>
+      <div><h4>Annual Science Exhibition</h4><p>Grades 8–12 present research projects. Open to parents and public. Judged by Kathmandu University faculty.</p></div>
+    </div>
+    <div class="event-card reveal">
+      <div class="event-date-box"><div class="e-day">05</div><div class="e-mon">Sep</div></div>
+      <div><h4>2025–26 Admissions Deadline</h4><p>Final deadline for all year groups for the upcoming academic year. Limited seats available.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+<div class="cta-inner reveal">
+  <h2>Applications Now Open for 2025–26</h2>
+  <p>Seats are limited across all year groups. Submit your application early to secure your child's place at Everest Academy for the upcoming academic year.</p>
+  <div class="cta-btns">
+    <a href="admissions.html" class="btn-gold">Start Application →</a>
+    <a href="contact.html" class="btn-ghost">Ask the Admissions Team</a>
+  </div>
+</div>
+</section>
+
+<footer>
+<div class="footer-grid">
+  <div class="footer-brand">
+    <a href="index.html" class="logo">
+      <svg width="34" height="34" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="10" fill="rgba(201,151,58,.14)"/><path d="M7 33L14 15l7 12 7-16 7 21" fill="none" stroke="#C9973A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <div class="logo-text" style="font-size:1rem">Everest Academy</div>
+    </a>
+    <p>Providing world-class Cambridge education in the heart of Kathmandu since 2003. Preparing Nepal's next generation for global opportunities.</p>
+  </div>
+  <div class="footer-col"><h5>Academics</h5><ul><li><a href="academics.html">Early Years</a></li><li><a href="academics.html">Cambridge Primary</a></li><li><a href="academics.html">IGCSE</a></li><li><a href="academics.html">A-Levels</a></li><li><a href="faculty.html">Faculty</a></li></ul></div>
+  <div class="footer-col"><h5>Campus</h5><ul><li><a href="about.html">About Us</a></li><li><a href="student-life.html">Student Life</a></li><li><a href="news.html">News & Events</a></li><li><a href="admissions.html">Admissions</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  <div class="footer-col"><h5>Contact</h5><ul><li><a href="#">Lazimpat, Kathmandu</a></li><li><a href="tel:+97714441234">+977-1-444-1234</a></li><li><a href="mailto:admissions@everestacademy.edu.np">admissions@everestacademy.edu.np</a></li><li><a href="#">Mon–Fri: 8 AM – 4 PM</a></li><li><a href="#">Sat: 9 AM – 12 PM</a></li></ul></div>
+</div>
+<div class="footer-bot">
+  <p>© 2025 Everest Academy, Kathmandu. All rights reserved.</p>
+  <p>Affiliated with Cambridge Assessment International Education</p>
+</div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+function toggleMob(){document.getElementById('mob').classList.toggle('open')}
+
+// Hero entrance
+window.addEventListener('load',()=>{
+  gsap.timeline()
+    .to('#hb',{opacity:1,y:0,duration:.7,ease:'power2.out'})
+    .to('#ht',{opacity:1,y:0,duration:.85,ease:'power2.out'},'-=.35')
+    .to('#hd',{opacity:1,y:0,duration:.7,ease:'power2.out'},'-=.4')
+    .to('#hbtn',{opacity:1,y:0,duration:.6,ease:'power2.out'},'-=.35')
+    .to('#htrust',{opacity:1,y:0,duration:.55,ease:'power2.out'},'-=.25');
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Counter
+function counter(el){
+  const t=parseInt(el.dataset.target),s=el.dataset.suffix||'';
+  let c=0;const inc=t/110;
+  const id=setInterval(()=>{c+=inc;if(c>=t){el.textContent=t+s+(t<100?'+':'');clearInterval(id)}else el.textContent=Math.floor(c)+s;},16);
+}
+const sobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-target]').forEach(counter);sobs.unobserve(e.target)}});
+},{threshold:.3});
+const ss=document.querySelector('.stats');if(ss)sobs.observe(ss);
+
+// Mountain parallax
+window.addEventListener('scroll',()=>{
+  const m=document.querySelector('.mountain-hero');
+  if(m)m.style.transform=`translateY(${scrollY*.12}px)`;
+});
+</script>
+</body>
+</html>

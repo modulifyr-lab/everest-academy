@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions | Everest Academy Kathmandu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<style>
+:root{--navy:#0F2240;--gold:#C9973A;--gold-light:#E8B84B;--green:#2D6A4F;--bg:#F4F6F8;--white:#fff;--text:#1A1A2E;--muted:#64748B;--border:#E2E8F0}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.25rem 0;transition:all .3s;background:rgba(15,34,64,.97);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;line-height:1.1}
+.logo-text span{display:block;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:.55rem 1.3rem;border-radius:6px;font-weight:700!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:999;padding:5rem 2rem 2rem;flex-direction:column}
+.mob-menu.open{display:flex}
+.mob-menu a{color:#fff;text-decoration:none;font-family:'Playfair Display',serif;font-size:1.6rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.page-hero{padding:9rem 0 5rem;background:linear-gradient(155deg,#0F2240 0%,#1a3a5c 60%,#0d3d2a 100%);position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:80px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.page-hero-inner{max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;z-index:1}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;font-size:.78rem;color:rgba(255,255,255,.5)}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none}.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb span{color:var(--gold)}
+.page-hero h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.08;max-width:700px;margin-bottom:1rem}
+.page-hero h1 em{font-style:italic;color:var(--gold)}
+.page-hero p{color:rgba(255,255,255,.68);font-size:1.05rem;line-height:1.8;max-width:580px}
+.section{padding:5.5rem 0}
+.section-white{background:#fff}
+.container{max-width:1280px;margin:0 auto;padding:0 2rem}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.section-h{font-size:clamp(1.9rem,3.5vw,2.85rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem}
+.section-p{color:var(--muted);font-size:1rem;line-height:1.8;max-width:580px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.btn-gold{background:var(--gold);color:var(--navy);padding:.9rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--navy);padding:.9rem 2rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;border:1.5px solid var(--border);transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-ghost-wh{background:transparent;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid rgba(255,255,255,.25);transition:all .2s;display:inline-flex}
+.btn-ghost-wh:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.08)}
+.cta-band{background:linear-gradient(130deg,var(--navy) 0%,#1a3a5c 100%);padding:5rem 0;text-align:center}
+.cta-inner{max-width:660px;margin:0 auto;padding:0 2rem}
+.cta-inner h2{font-size:clamp(1.9rem,4vw,2.85rem);font-weight:900;color:#fff;margin-bottom:1rem}
+.cta-inner p{color:rgba(255,255,255,.68);margin-bottom:2rem;line-height:1.8}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+footer{background:#080f1c;color:#fff;padding:4rem 0 2rem}
+.footer-grid{max-width:1280px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{color:rgba(255,255,255,.45);font-size:.845rem;line-height:1.75;margin-top:.75rem;max-width:270px}
+.footer-col h5{font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.845rem;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bot{max-width:1280px;margin:2.5rem auto 0;padding:1.25rem 2rem 0;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.footer-bot p{color:rgba(255,255,255,.3);font-size:.75rem}
+
+/* ADMISSIONS SPECIFIC */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.step-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:2.25rem;position:relative}
+.step-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:rgba(201,151,58,.25);line-height:1;margin-bottom:1rem}
+.step-card h3{font-size:1.15rem;color:var(--navy);margin-bottom:.6rem}
+.step-card p{font-size:.87rem;color:var(--muted);line-height:1.7}
+.data-table{width:100%;border-collapse:collapse;margin-top:2rem;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.data-table th{background:var(--navy);color:#fff;text-align:left;padding:1rem 1.5rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.data-table td{padding:1rem 1.5rem;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--text)}
+.data-table tr:last-child td{border-bottom:none}
+.fee-note{background:rgba(201,151,58,.1);border-left:3px solid var(--gold);padding:1rem 1.5rem;border-radius:0 8px 8px 0;font-size:.87rem;color:var(--navy);margin-top:2rem;margin-bottom:-.5rem}
+.dates-timeline{display:flex;flex-direction:column;gap:1.5rem;margin-top:2.5rem}
+.date-row{display:flex;gap:1.5rem;align-items:baseline;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.date-row:last-child{border-bottom:none}
+.date-val{font-family:'Playfair Display',serif;font-weight:700;color:var(--gold);width:200px;flex-shrink:0;font-size:.95rem}
+.date-label{font-size:.92rem;color:var(--text)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;color:var(--navy);font-size:.98rem}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--gold);transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a p{padding-bottom:1.5rem;color:var(--muted);font-size:.9rem;line-height:1.75;max-width:700px}
+.faq-item.open .faq-a{max-height:220px}
+@media(max-width:860px){.steps-grid{grid-template-columns:1fr}.date-row{flex-direction:column;gap:.3rem}.date-val{width:auto}}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="logo">
+    <svg width="36" height="36" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="10" fill="rgba(201,151,58,.14)"/><path d="M7 33L14 15l7 12 7-16 7 21" fill="none" stroke="#C9973A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <div class="logo-text">Everest Academy<span>Kathmandu, Nepal · Est. 2003</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="academics.html">Academics</a></li>
+    <li><a href="admissions.html" class="active">Admissions</a></li>
+    <li><a href="faculty.html">Faculty</a></li>
+    <li><a href="student-life.html">Student Life</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="academics.html">Academics</a><a href="admissions.html">Admissions</a><a href="faculty.html">Faculty</a><a href="student-life.html">Student Life</a><a href="news.html">News</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+<div class="page-hero-inner">
+  <div class="breadcrumb"><a href="index.html">Home</a> / <span>Admissions</span></div>
+  <h1>Your Child's Place <em>Starts Here</em></h1>
+  <p>A straightforward, transparent admissions process. No surprises.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">How It Works</p><h2 class="section-h">Three Steps to Enrolment</h2></div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <h3>Submit Application</h3>
+      <p>Fill out the online enquiry form. Attach your child's academic reports from the last two years. Submit before the relevant deadline.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">02</div>
+      <h3>Entrance Assessment</h3>
+      <p>An age-appropriate written assessment in English and Mathematics. Nursery and KG applicants undergo informal play-based observation only. Results shared within 5 business days.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">03</div>
+      <h3>Enrolment & Fee Payment</h3>
+      <p>An offer letter is issued. Confirm your child's place by paying the admission fee. Academic materials and the uniform list are provided at this stage.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section section-white">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Eligibility</p><h2 class="section-h">Requirements by Grade</h2></div>
+  <table class="data-table reveal">
+    <tr><th>Grade</th><th>Requirement</th></tr>
+    <tr><td>Early Years</td><td>Ages 3–5 by April 1st of the academic year</td></tr>
+    <tr><td>Primary (Grade 1)</td><td>Age 5–6, basic English literacy preferred</td></tr>
+    <tr><td>Mid-Entry (Grades 2–8)</td><td>Previous academic reports, English proficiency test</td></tr>
+    <tr><td>IGCSE (Grades 9–10)</td><td>Grade 8 report card, school recommendation letter</td></tr>
+    <tr><td>A-Levels (Grade 11)</td><td>Minimum 5 B grades in IGCSE or equivalent</td></tr>
+  </table>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Fee Structure</p><h2 class="section-h">Transparent, Indicative Pricing</h2></div>
+  <table class="data-table reveal">
+    <tr><th>Item</th><th>Amount (NPR)</th></tr>
+    <tr><td>Admission Fee (one-time)</td><td>15,000 – 25,000</td></tr>
+    <tr><td>Annual Tuition Fee</td><td>1,80,000 – 2,80,000 (varies by grade)</td></tr>
+    <tr><td>Exam Fee (Cambridge externals)</td><td>12,000 – 18,000 per subject</td></tr>
+    <tr><td>Transportation (optional)</td><td>18,000 – 28,000 per year, by route</td></tr>
+    <tr><td>Uniform</td><td>Approximately 4,500 – 6,000</td></tr>
+  </table>
+  <div class="fee-note reveal">All fees above are indicative ranges for 2025–26. Exact fees are confirmed at enrolment. No hidden charges.</div>
+</div>
+</section>
+
+<section class="section section-white">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Key Dates</p><h2 class="section-h">Important Admissions Timeline</h2></div>
+  <div class="dates-timeline reveal">
+    <div class="date-row"><div class="date-val">March 1, 2025</div><div class="date-label">Applications open</div></div>
+    <div class="date-row"><div class="date-val">March – August 2025</div><div class="date-label">Entrance assessments, rolling basis</div></div>
+    <div class="date-row"><div class="date-val">September 5, 2025</div><div class="date-label">Final application deadline</div></div>
+    <div class="date-row"><div class="date-val">April 2025</div><div class="date-label">Academic year start (new session)</div></div>
+    <div class="date-row"><div class="date-val">August 2025</div><div class="date-label">Second intake begins</div></div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Frequently Asked</p><h2 class="section-h">Common Admissions Questions</h2></div>
+  <div class="reveal" style="margin-top:2rem;max-width:800px">
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you offer scholarships?</div>
+      <div class="faq-a"><p>Yes. Merit-based scholarships offering up to a 25% fee waiver are available for top assessment scorers. Financial need-based waivers are assessed on a case-by-case basis.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can students transfer mid-year?</div>
+      <div class="faq-a"><p>Yes, subject to seat availability and a placement assessment.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is Nepali medium instruction available?</div>
+      <div class="faq-a"><p>English is our primary medium of instruction. Nepali language is taught as a core subject at every grade. Some subjects can be offered in Nepali medium on request.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What documents do I need?</div>
+      <div class="faq-a"><p>Birth certificate, previous report cards covering the last two years, passport-size photos, and a citizenship copy of the parent or guardian.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there a school bus?</div>
+      <div class="faq-a"><p>Yes. Routes cover Lazimpat, Maharajgunj, Baluwatar, Baneshwor, and surrounding areas.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you accept international students?</div>
+      <div class="faq-a"><p>Yes, from any country. An English proficiency assessment is required as part of the admissions process.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="cta-band">
+<div class="cta-inner reveal">
+  <h2>Begin Your Application</h2>
+  <p>Our admissions team responds within one business day. Call us directly at +977-1-444-1234.</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-gold">Start Application →</a>
+    <a href="tel:+97714441234" class="btn-ghost-wh">Call Admissions</a>
+  </div>
+</div>
+</section>
+
+<footer>
+<div class="footer-grid">
+  <div class="footer-brand">
+    <a href="index.html" class="logo"><svg width="34" height="34" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="10" fill="rgba(201,151,58,.14)"/><path d="M7 33L14 15l7 12 7-16 7 21" fill="none" stroke="#C9973A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="logo-text" style="font-size:1rem">Everest Academy</div></a>
+    <p>Providing world-class Cambridge education in the heart of Kathmandu since 2003.</p>
+  </div>
+  <div class="footer-col"><h5>Academics</h5><ul><li><a href="academics.html">Early Years</a></li><li><a href="academics.html">Cambridge Primary</a></li><li><a href="academics.html">IGCSE</a></li><li><a href="academics.html">A-Levels</a></li></ul></div>
+  <div class="footer-col"><h5>Campus</h5><ul><li><a href="about.html">About Us</a></li><li><a href="student-life.html">Student Life</a></li><li><a href="news.html">News & Events</a></li><li><a href="admissions.html">Admissions</a></li></ul></div>
+  <div class="footer-col"><h5>Contact</h5><ul><li><a href="#">Lazimpat, Kathmandu</a></li><li><a href="tel:+97714441234">+977-1-444-1234</a></li><li><a href="mailto:info@everestacademy.edu.np">info@everestacademy.edu.np</a></li></ul></div>
+</div>
+<div class="footer-bot"><p>© 2025 Everest Academy, Kathmandu.</p><p>Affiliated with Cambridge Assessment International Education</p></div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

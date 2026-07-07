@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Life | Everest Academy Kathmandu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<style>
+:root{--navy:#0F2240;--gold:#C9973A;--gold-light:#E8B84B;--green:#2D6A4F;--bg:#F4F6F8;--white:#fff;--text:#1A1A2E;--muted:#64748B;--border:#E2E8F0}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif}
+nav{position:fixed;top:0;width:100%;z-index:1000;padding:1.25rem 0;transition:all .3s;background:rgba(15,34,64,.97);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.logo-text{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;line-height:1.1}
+.logo-text span{display:block;font-family:'Inter',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:.55rem 1.3rem;border-radius:6px;font-weight:700!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mob-menu{display:none;position:fixed;inset:0;background:var(--navy);z-index:999;padding:5rem 2rem 2rem;flex-direction:column}
+.mob-menu.open{display:flex}
+.mob-menu a{color:#fff;text-decoration:none;font-family:'Playfair Display',serif;font-size:1.6rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.page-hero{padding:9rem 0 5rem;background:linear-gradient(155deg,#0F2240 0%,#1a3a5c 60%,#0d3d2a 100%);position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:80px;background:var(--bg);clip-path:ellipse(55% 100% at 50% 100%)}
+.page-hero-inner{max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;z-index:1}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;font-size:.78rem;color:rgba(255,255,255,.5)}
+.breadcrumb a{color:rgba(255,255,255,.5);text-decoration:none}.breadcrumb a:hover{color:var(--gold)}
+.breadcrumb span{color:var(--gold)}
+.page-hero h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;color:#fff;line-height:1.08;max-width:700px;margin-bottom:1rem}
+.page-hero h1 em{font-style:italic;color:var(--gold)}
+.page-hero p{color:rgba(255,255,255,.68);font-size:1.05rem;line-height:1.8;max-width:620px}
+.section{padding:5.5rem 0}
+.section-white{background:#fff}
+.container{max-width:1280px;margin:0 auto;padding:0 2rem}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.section-h{font-size:clamp(1.9rem,3.5vw,2.85rem);font-weight:700;color:var(--navy);line-height:1.15;letter-spacing:-.02em;margin-bottom:.9rem}
+.section-p{color:var(--muted);font-size:1rem;line-height:1.8;max-width:580px}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.btn-gold{background:var(--gold);color:var(--navy);padding:.9rem 2rem;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-ghost-wh{background:transparent;color:#fff;padding:.9rem 2rem;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid rgba(255,255,255,.25);transition:all .2s;display:inline-flex}
+.btn-ghost-wh:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.08)}
+.cta-band{background:linear-gradient(130deg,var(--navy) 0%,#1a3a5c 100%);padding:5rem 0;text-align:center}
+.cta-inner{max-width:660px;margin:0 auto;padding:0 2rem}
+.cta-inner h2{font-size:clamp(1.9rem,4vw,2.85rem);font-weight:900;color:#fff;margin-bottom:1rem}
+.cta-inner p{color:rgba(255,255,255,.68);margin-bottom:2rem;line-height:1.8}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+footer{background:#080f1c;color:#fff;padding:4rem 0 2rem}
+.footer-grid{max-width:1280px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem}
+.footer-brand p{color:rgba(255,255,255,.45);font-size:.845rem;line-height:1.75;margin-top:.75rem;max-width:270px}
+.footer-col h5{font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.845rem;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bot{max-width:1280px;margin:2.5rem auto 0;padding:1.25rem 2rem 0;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.footer-bot p{color:rgba(255,255,255,.3);font-size:.75rem}
+
+/* STUDENT LIFE SPECIFIC */
+.card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.act-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.9rem;transition:all .3s}
+.act-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,34,64,.07)}
+.act-icon{font-size:1.7rem;margin-bottom:.9rem}
+.act-card h4{font-size:1.02rem;color:var(--navy);margin-bottom:.5rem}
+.act-card p{font-size:.85rem;color:var(--muted);line-height:1.65}
+.act-tag{display:inline-block;margin-top:.7rem;font-size:.72rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.04em}
+.council-box{background:var(--bg);border-radius:16px;padding:2.5rem;display:flex;gap:2rem;align-items:center;margin-top:2rem}
+.council-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--gold);flex-shrink:0}
+.council-box p{color:var(--muted);line-height:1.75;font-size:.92rem}
+.service-box{display:flex;gap:2.5rem;align-items:flex-start;margin-top:2rem;flex-wrap:wrap}
+.service-stat{background:var(--navy);color:#fff;border-radius:14px;padding:1.75rem 2rem;text-align:center;flex-shrink:0}
+.service-stat .num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--gold-light)}
+.service-stat .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.6);margin-top:.3rem}
+.events-table{width:100%;border-collapse:collapse;margin-top:2rem;background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.events-table th{background:var(--navy);color:#fff;text-align:left;padding:1rem 1.5rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.events-table td{padding:1rem 1.5rem;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--text)}
+.events-table tr:last-child td{border-bottom:none}
+@media(max-width:900px){.card-grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.card-grid-3{grid-template-columns:1fr}.council-box{flex-direction:column;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="logo">
+    <svg width="36" height="36" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="10" fill="rgba(201,151,58,.14)"/><path d="M7 33L14 15l7 12 7-16 7 21" fill="none" stroke="#C9973A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <div class="logo-text">Everest Academy<span>Kathmandu, Nepal · Est. 2003</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="academics.html">Academics</a></li>
+    <li><a href="admissions.html">Admissions</a></li>
+    <li><a href="faculty.html">Faculty</a></li>
+    <li><a href="student-life.html" class="active">Student Life</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="academics.html">Academics</a><a href="admissions.html">Admissions</a><a href="faculty.html">Faculty</a><a href="student-life.html">Student Life</a><a href="news.html">News</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+<div class="page-hero-inner">
+  <div class="breadcrumb"><a href="index.html">Home</a> / <span>Student Life</span></div>
+  <h1>A School, <em>Not Just a Classroom</em></h1>
+  <p>85 extracurricular activities. 6 sports teams. 3 performing arts groups. Because education happens everywhere.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Sports</p><h2 class="section-h">Six Competitive Teams</h2></div>
+  <div class="card-grid-3">
+    <div class="act-card reveal"><div class="act-icon">🏀</div><h4>Basketball</h4><p>Boys' and girls' teams competing in the Kathmandu Valley schools league.</p><span class="act-tag">Runners-up, 2024</span></div>
+    <div class="act-card reveal"><div class="act-icon">🏐</div><h4>Volleyball</h4><p>Coached by our Head of PE, a former national team player.</p><span class="act-tag">Inter-school champions</span></div>
+    <div class="act-card reveal"><div class="act-icon">🏸</div><h4>Badminton</h4><p>Open to Grades 6–12, with weekly after-school training sessions.</p><span class="act-tag">Growing programme</span></div>
+    <div class="act-card reveal"><div class="act-icon">⚽</div><h4>Football</h4><p>Our most popular sport by participation, across four age divisions.</p><span class="act-tag">4 age divisions</span></div>
+    <div class="act-card reveal"><div class="act-icon">🏃</div><h4>Athletics</h4><p>Track and field training year-round, culminating in Annual Sports Day.</p><span class="act-tag">Records broken, 2025</span></div>
+    <div class="act-card reveal"><div class="act-icon">🏓</div><h4>Table Tennis</h4><p>Indoor facility available at lunch and after school for all grades.</p><span class="act-tag">Open access</span></div>
+  </div>
+</div>
+</section>
+
+<section class="section section-white">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Arts & Culture</p><h2 class="section-h">Three Performing Arts Groups</h2></div>
+  <div class="card-grid-3">
+    <div class="act-card reveal"><div class="act-icon">🎭</div><h4>Drama Club</h4><p>Stages one full production annually, written and directed with student involvement at every stage.</p></div>
+    <div class="act-card reveal"><div class="act-icon">🎵</div><h4>Music Ensemble</h4><p>30 members. Performs at two public concerts each year, spanning classical and contemporary repertoire.</p></div>
+    <div class="act-card reveal"><div class="act-icon">🎨</div><h4>Visual Arts</h4><p>IGCSE-level instruction, with an annual student exhibition open to parents and the public.</p></div>
+    <div class="act-card reveal"><div class="act-icon">💃</div><h4>Dance</h4><p>Classical Nepali and contemporary styles, performed at Cultural Day and school assemblies.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Academic Clubs</p><h2 class="section-h">Where Curiosity Continues</h2></div>
+  <div class="card-grid-3">
+    <div class="act-card reveal"><div class="act-icon">🔬</div><h4>Science Olympiad Team</h4><p>National-level competitors, with 3 medals won over the past two years.</p></div>
+    <div class="act-card reveal"><div class="act-icon">➗</div><h4>Math Club</h4><p>Weekly problem-solving sessions for students who want more than the syllabus.</p></div>
+    <div class="act-card reveal"><div class="act-icon">🌐</div><h4>Model United Nations</h4><p>Represented Everest Academy at 2 international conferences to date.</p></div>
+    <div class="act-card reveal"><div class="act-icon">🗣</div><h4>Debate Society</h4><p>Regular inter-house and inter-school debate competitions throughout the year.</p></div>
+    <div class="act-card reveal"><div class="act-icon">📖</div><h4>Book Club</h4><p>Cross-grade reading group meeting biweekly to discuss a shared title.</p></div>
+    <div class="act-card reveal"><div class="act-icon">💻</div><h4>Coding Club</h4><p>Beginner to advanced tracks, run in partnership with the Computing department.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section section-white">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Student Voice</p><h2 class="section-h">Student Council</h2></div>
+  <div class="council-box reveal">
+    <div class="council-num">12</div>
+    <p>An elected student body of 12 members who organise school events, liaise directly with faculty on student concerns, and manage student-run initiatives across the campus each year.</p>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Giving Back</p><h2 class="section-h">Community Service</h2></div>
+  <div class="service-box">
+    <div class="service-stat reveal"><div class="num">20+</div><div class="lbl">Hours / Year, Required</div></div>
+    <p class="reveal" style="max-width:600px">Mandatory for Grades 9 through 12. Students partner with local orphanages, participate in community clean-up drives, and run literacy programmes in rural areas — building character alongside academic record.</p>
+  </div>
+</div>
+</section>
+
+<section class="section section-white">
+<div class="container">
+  <div class="reveal"><p class="eyebrow">Calendar</p><h2 class="section-h">Annual Events</h2></div>
+  <table class="events-table reveal">
+    <tr><th>Event</th><th>When</th></tr>
+    <tr><td>Sports Day</td><td>February</td></tr>
+    <tr><td>Science Exhibition</td><td>August</td></tr>
+    <tr><td>Cultural Day</td><td>October</td></tr>
+    <tr><td>Annual Gathering</td><td>December</td></tr>
+    <tr><td>Inter-school Competitions</td><td>Throughout the year</td></tr>
+  </table>
+</div>
+</section>
+
+<section class="cta-band">
+<div class="cta-inner reveal">
+  <h2>Come See It Yourself</h2>
+  <p>Photos only tell part of the story. Schedule a campus visit and see student life in person.</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-gold">Schedule a Visit →</a>
+  </div>
+</div>
+</section>
+
+<footer>
+<div class="footer-grid">
+  <div class="footer-brand">
+    <a href="index.html" class="logo"><svg width="34" height="34" viewBox="0 0 42 42" fill="none"><rect width="42" height="42" rx="10" fill="rgba(201,151,58,.14)"/><path d="M7 33L14 15l7 12 7-16 7 21" fill="none" stroke="#C9973A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="logo-text" style="font-size:1rem">Everest Academy</div></a>
+    <p>Providing world-class Cambridge education in the heart of Kathmandu since 2003.</p>
+  </div>
+  <div class="footer-col"><h5>Academics</h5><ul><li><a href="academics.html">Early Years</a></li><li><a href="academics.html">Cambridge Primary</a></li><li><a href="academics.html">IGCSE</a></li><li><a href="academics.html">A-Levels</a></li></ul></div>
+  <div class="footer-col"><h5>Campus</h5><ul><li><a href="about.html">About Us</a></li><li><a href="student-life.html">Student Life</a></li><li><a href="news.html">News & Events</a></li><li><a href="admissions.html">Admissions</a></li></ul></div>
+  <div class="footer-col"><h5>Contact</h5><ul><li><a href="#">Lazimpat, Kathmandu</a></li><li><a href="tel:+97714441234">+977-1-444-1234</a></li><li><a href="mailto:info@everestacademy.edu.np">info@everestacademy.edu.np</a></li></ul></div>
+</div>
+<div class="footer-bot"><p>© 2025 Everest Academy, Kathmandu.</p><p>Affiliated with Cambridge Assessment International Education</p></div>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
