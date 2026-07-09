@@ -1,0 +1,163 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const timeline = [
+  { year: "2003", event: "Founded in Lazimpat with 120 students" },
+  { year: "2005", event: "Cambridge International affiliation" },
+  { year: "2009", event: "New science block opened" },
+  { year: "2013", event: "A-Level programme launched" },
+  { year: "2018", event: "Smart classroom initiative complete" },
+  { year: "2022", event: "First international university batch" },
+  { year: "2025", event: "850 students, 52 faculty members" },
+];
+
+const values = [
+  { title: "Academic Rigour", desc: "High standards that challenge every student to exceed their own expectations" },
+  { title: "Global Perspective", desc: "International curriculum with local values and cultural grounding" },
+  { title: "Integrity First", desc: "Honesty and ethical conduct in all interactions" },
+  { title: "Curiosity Over Compliance", desc: "We encourage questions and independent thinking" },
+  { title: "Nepali Identity", desc: "Pride in our heritage alongside global citizenship" },
+  { title: "Student Wellbeing", desc: "A supportive environment where every child can flourish" },
+];
+
+const facilities = [
+  { name: "Science Labs", detail: "3 fully equipped laboratories for Chemistry, Physics, and Biology" },
+  { name: "Computer Lab", detail: "45 stations with high-speed internet access" },
+  { name: "Library", detail: "10,000+ volumes with digital catalogue and study rooms" },
+  { name: "Sports Complex", detail: "Multi-use facility for basketball, volleyball, and athletics" },
+  { name: "Arts Studios", detail: "Dedicated spaces for visual arts, music, and drama" },
+  { name: "Health Centre", detail: "On-site nurse and counselling services for student wellbeing" },
+];
+---
+
+<Layout
+  title="About"
+  description="Learn about Everest Academy's history, values, and commitment to Cambridge education since 2003."
+>
+  <PageHeader
+    eyebrow="Our Story"
+    title="Built on Purpose, Grounded in Nepal"
+    lede="Since 2003, Everest Academy has been shaping confident, capable graduates who carry Nepali identity into the world."
+  />
+
+  <!-- STORY -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto grid max-w-[1400px] gap-16 md:grid-cols-2 md:items-center">
+      <div data-reveal>
+        <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-navy to-navy-mid flex items-center justify-center">
+          <div class="text-center">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="mx-auto mb-4">
+              <path d="M40 10L15 60h15L40 35l10 25h15L40 10z" stroke="#C9973A" stroke-width="2"/>
+              <path d="M40 10l20 50H55L40 35 25 60H20L40 10z" stroke="#C9973A" stroke-width="2" opacity="0.5"/>
+            </svg>
+            <p class="font-display text-2xl font-bold text-gold">2003</p>
+            <p class="eyebrow text-cream/70">Year Founded</p>
+          </div>
+        </div>
+      </div>
+      <div data-reveal>
+        <p class="eyebrow mb-4 text-gold">Our History</p>
+        <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+          From 120 Students to 850
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed text-muted">
+          Everest Academy was founded in 2003 in Lazimpat, Kathmandu, with a vision to provide world-class education that prepares Nepali students for global opportunities while keeping them rooted in local values.
+        </p>
+        <p class="mt-4 text-lg leading-relaxed text-muted">
+          Today, we serve over 850 students from Early Years through A-Levels, maintaining the personalised attention and academic rigour that has defined us since our founding.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="bg-navy px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Our Journey</p>
+        <h2 class="font-display text-4xl font-bold text-cream md:text-5xl">Milestones</h2>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {timeline.map((t) => (
+          <div class="border-l-2 border-gold pl-6" data-reveal>
+            <p class="font-display text-3xl font-bold text-gold">{t.year}</p>
+            <p class="mt-2 text-cream/80">{t.event}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">What We Stand For</p>
+        <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+          Six Core Values
+        </h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {values.map((v) => (
+          <div class="rounded-xl border border-border bg-white p-8 transition-all hover:border-gold hover:shadow-lg" data-reveal>
+            <h3 class="font-display text-xl font-bold text-navy">{v.title}</h3>
+            <p class="mt-3 text-muted">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FACILITIES -->
+  <section class="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Our Campus</p>
+        <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+          World-Class Facilities
+        </h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {facilities.map((f) => (
+          <div class="rounded-xl border border-border bg-white p-8" data-reveal>
+            <h3 class="font-display text-lg font-bold text-navy">{f.name}</h3>
+            <p class="mt-2 text-muted">{f.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCREDITATION -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-12" data-reveal>
+        <p class="eyebrow mb-4 text-gold text-center">Accreditation</p>
+        <h2 class="font-display text-center text-4xl font-bold text-navy md:text-5xl">Recognised Excellence</h2>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        {[
+          { name: "Cambridge International Education", abbr: "CIE" },
+          { name: "National Education Board", abbr: "NEB" },
+          { name: "Ministry of Education, Nepal", abbr: "MoE" },
+        ].map((a) => (
+          <div class="rounded-2xl border border-gold bg-navy p-10 text-center" data-reveal>
+            <p class="font-display text-4xl font-bold text-gold">{a.abbr}</p>
+            <p class="mt-3 text-cream/80">{a.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { initReveal, initHeroIntro } from "../scripts/animations.js";
+    initHeroIntro();
+    initReveal();
+  </script>
+</Layout>

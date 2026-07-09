@@ -1,0 +1,168 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const stats = [
+  { num: "52", label: "Teachers" },
+  { num: "70%+", label: "Postgraduate" },
+  { num: "14", label: "Subjects" },
+  { num: "9", label: "Years Avg. Experience" },
+];
+
+const heads = [
+  { name: "Sunita Pradhan", initials: "SP", dept: "Sciences", qual: "M.Sc. Chemistry", exp: "14 years" },
+  { name: "Ramesh Karki", initials: "RK", dept: "Mathematics", qual: "M.Ed.", exp: "11 years" },
+  { name: "Anisha Shrestha", initials: "AS", dept: "English", qual: "B.A. English Lit", exp: "9 years" },
+  { name: "Dipesh Tamang", initials: "DT", dept: "Social Studies", qual: "M.A. History", exp: "12 years" },
+  { name: "Priya Thapa", initials: "PT", dept: "Computing", qual: "B.Sc. CS", exp: "7 years" },
+  { name: "Anil Gurung", initials: "AG", dept: "Physical Education", qual: "B.P.Ed.", exp: "8 years" },
+];
+
+const teachers = [
+  { name: "Binita Poudel", dept: "Chemistry" },
+  { name: "Suraj Rai", dept: "Physics" },
+  { name: "Nisha Maharjan", dept: "Biology" },
+  { name: "Kiran Adhikari", dept: "Economics" },
+  { name: "Sabina Gurung", dept: "Nepali" },
+  { name: "Prakash Bhattarai", dept: "Geography" },
+  { name: "Manisha Thapa", dept: "Art" },
+  { name: "Rabin Shrestha", dept: "Computer Science" },
+];
+---
+
+<Layout
+  title="Faculty"
+  description="Meet Everest Academy's experienced faculty of 52 teachers, many with postgraduate qualifications."
+>
+  <PageHeader
+    eyebrow="Our Team"
+    title="The People Who Make the Difference"
+    lede="52 dedicated educators committed to nurturing every student's potential."
+  />
+
+  <!-- STATS -->
+  <section class="bg-navy px-6 py-16 md:px-10">
+    <div class="mx-auto grid max-w-[1400px] grid-cols-2 gap-8 md:grid-cols-4">
+      {stats.map((s) => (
+        <div class="text-center" data-reveal>
+          <p class="font-display text-5xl font-bold text-gold md:text-6xl">{s.num}</p>
+          <p class="eyebrow mt-2 text-cream/70">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- DEPARTMENT HEADS -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Leadership</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Department Heads</h2>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {heads.map((h) => (
+          <div class="rounded-2xl border border-border bg-white p-8 transition-all hover:border-gold hover:shadow-xl" data-reveal>
+            <div class="flex items-center gap-4">
+              <div class="flex h-16 w-16 items-center justify-center rounded-full bg-navy">
+                <span class="font-display text-xl font-bold text-gold">{h.initials}</span>
+              </div>
+              <div>
+                <h3 class="font-display text-lg font-bold text-navy">{h.name}</h3>
+                <p class="eyebrow text-green">{h.dept}</p>
+              </div>
+            </div>
+            <div class="mt-6 border-t border-border pt-6">
+              <p class="text-sm text-muted">{h.qual}</p>
+              <p class="mt-1 text-sm text-muted">{h.exp} experience</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING STAFF -->
+  <section class="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Teaching Staff</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Our Educators</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {teachers.map((t) => (
+          <div class="rounded-xl border border-border bg-white p-6 text-center" data-reveal>
+            <div class="mx-auto h-14 w-14 rounded-full bg-navy/10 flex items-center justify-center">
+              <span class="font-display font-bold text-navy">{t.name.split(' ').map(n => n[0]).join('')}</span>
+            </div>
+            <h3 class="mt-4 font-display font-bold text-navy">{t.name}</h3>
+            <p class="eyebrow mt-1 text-muted">{t.dept}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL DEVELOPMENT -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="grid gap-16 md:grid-cols-2 md:items-center">
+        <div data-reveal>
+          <p class="eyebrow mb-4 text-gold">Growth</p>
+          <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+            Continuous Development
+          </h2>
+          <p class="mt-6 text-lg leading-relaxed text-muted">
+            Every Everest Academy teacher completes Cambridge International professional development training annually, ensuring our curriculum stays current with global best practices.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed text-muted">
+            We also conduct regular in-house workshops and peer observation sessions to foster a culture of continuous improvement.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-gold bg-navy p-10" data-reveal>
+          <h3 class="font-display text-2xl font-bold text-cream">Professional Development</h3>
+          <ul class="mt-6 space-y-4 text-cream/80">
+            <li class="flex items-start gap-3">
+              <span class="text-gold">✓</span>
+              Annual Cambridge International PD training
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-gold">✓</span>
+              Regular in-house workshops
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-gold">✓</span>
+              Peer observation programme
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-gold">✓</span>
+              Conference attendance support
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-cream px-6 py-20 text-center md:px-10 md:py-28">
+    <div class="mx-auto max-w-2xl" data-reveal>
+      <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+        Join Our Faculty
+      </h2>
+      <p class="mt-6 text-lg text-muted">
+        We're always looking for passionate educators to join our growing team.
+      </p>
+      <a href="/contact" class="mt-10 inline-block rounded-full bg-gold px-10 py-4 text-navy transition-all hover:bg-gold-light hover:shadow-lg">
+        Get in Touch
+      </a>
+    </div>
+  </section>
+
+  <script>
+    import { initReveal, initHeroIntro } from "../scripts/animations.js";
+    initHeroIntro();
+    initReveal();
+  </script>
+</Layout>

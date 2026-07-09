@@ -1,0 +1,175 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<Layout
+  title="Contact"
+  description="Get in touch with Everest Academy for admissions enquiries, campus visits, and general information."
+>
+  <PageHeader
+    eyebrow="Get in Touch"
+    title="Let's Start a Conversation"
+    lede="We're here to answer your questions about admissions, campus visits, and everything else."
+  />
+
+  <!-- CONTACT INFO -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="grid gap-12 md:grid-cols-3">
+        <div class="rounded-2xl border border-border bg-white p-10 text-center" data-reveal>
+          <div class="mx-auto h-16 w-16 rounded-full bg-navy/10 flex items-center justify-center text-2xl">
+            📍
+          </div>
+          <h3 class="mt-6 font-display text-xl font-bold text-navy">Visit Us</h3>
+          <p class="mt-3 text-muted">
+            Lazimpat, Kathmandu<br />
+            Nepal
+          </p>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="eyebrow mt-4 inline-block text-gold hover:text-gold-light">
+            Get Directions →
+          </a>
+        </div>
+
+        <div class="rounded-2xl border border-border bg-white p-10 text-center" data-reveal>
+          <div class="mx-auto h-16 w-16 rounded-full bg-navy/10 flex items-center justify-center text-2xl">
+            📞
+          </div>
+          <h3 class="mt-6 font-display text-xl font-bold text-navy">Call Us</h3>
+          <p class="mt-3 text-muted">
+            +977-1-444-1234<br />
+            Mon–Fri: 8AM–4PM<br />
+            Sat: 9AM–12PM
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-border bg-white p-10 text-center" data-reveal>
+          <div class="mx-auto h-16 w-16 rounded-full bg-navy/10 flex items-center justify-center text-2xl">
+            ✉️
+          </div>
+          <h3 class="mt-6 font-display text-xl font-bold text-navy">Email Us</h3>
+          <p class="mt-3 text-muted">
+            info@everestacademy.edu.np<br />
+            admissions@everestacademy.edu.np
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY FORM -->
+  <section class="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-3xl">
+      <div class="mb-12 text-center" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Enquiries</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Send Us a Message</h2>
+      </div>
+
+      <form class="rounded-2xl border border-border bg-white p-10" data-reveal onsubmit="event.preventDefault(); alert('Thank you for your enquiry. We will respond within 1 business day.');">
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <label class="eyebrow mb-2 block text-navy" for="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              required
+              class="w-full rounded-lg border border-border bg-cream px-4 py-3 text-navy placeholder:text-muted focus:border-gold focus:outline-none"
+              placeholder="Your first name"
+            />
+          </div>
+          <div>
+            <label class="eyebrow mb-2 block text-navy" for="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              required
+              class="w-full rounded-lg border border-border bg-cream px-4 py-3 text-navy placeholder:text-muted focus:border-gold focus:outline-none"
+              placeholder="Your last name"
+            />
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <div>
+            <label class="eyebrow mb-2 block text-navy" for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              required
+              class="w-full rounded-lg border border-border bg-cream px-4 py-3 text-navy placeholder:text-muted focus:border-gold focus:outline-none"
+              placeholder="your.email@example.com"
+            />
+          </div>
+          <div>
+            <label class="eyebrow mb-2 block text-navy" for="phone">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              class="w-full rounded-lg border border-border bg-cream px-4 py-3 text-navy placeholder:text-muted focus:border-gold focus:outline-none"
+              placeholder="+977..."
+            />
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <label class="eyebrow mb-2 block text-navy" for="inquiryType">Inquiry Type</label>
+          <select
+            id="inquiryType"
+            required
+            class="w-full rounded-lg border border-border bg-cream px-4 py-3 text-navy focus:border-gold focus:outline-none"
+          >
+            <option value="">Select an option</option>
+            <option value="admissions">Admissions</option>
+            <option value="general">General Enquiry</option>
+            <option value="campus-visit">Campus Visit</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="mt-6">
+          <label class="eyebrow mb-2 block text-navy" for="message">Message</label>
+          <textarea
+            id="message"
+            rows="5"
+            required
+            class="w-full rounded-lg border border-border bg-cream px-4 py-3 text-navy placeholder:text-muted focus:border-gold focus:outline-none resize-none"
+            placeholder="How can we help you?"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="mt-8 w-full rounded-full bg-gold py-4 text-navy font-bold transition-all hover:bg-gold-light hover:shadow-lg"
+        >
+          Send Enquiry
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CAMPUS VISIT CTA -->
+  <section class="bg-green px-6 py-20 text-center md:px-10 md:py-28">
+    <div class="mx-auto max-w-2xl" data-reveal>
+      <h2 class="font-display text-balance text-4xl font-bold text-white md:text-5xl">
+        Schedule a Campus Visit
+      </h2>
+      <p class="mt-6 text-lg text-white/80">
+        See our facilities, meet our teachers, and experience the Everest Academy difference firsthand.
+      </p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/admissions" class="eyebrow rounded-full bg-gold px-8 py-4 text-navy transition-all hover:bg-gold-light hover:shadow-lg">
+          Apply Now
+        </a>
+        <a href="tel:+977-1-444-1234" class="eyebrow rounded-full border-2 border-white px-8 py-4 text-white transition-all hover:bg-white hover:text-green">
+          Call Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { initReveal, initHeroIntro } from "../scripts/animations.js";
+    initHeroIntro();
+    initReveal();
+  </script>
+</Layout>

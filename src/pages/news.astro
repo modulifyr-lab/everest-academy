@@ -1,0 +1,125 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const featuredArticle = {
+  title: "Class of 2025 Achieves Record University Placements",
+  date: "December 2024",
+  excerpt: "94 students, 87 first-choice university offers, and 12 international placements across the UK, Australia, and the United States.",
+};
+
+const news = [
+  { date: "April 2025", title: "Science Olympiad Gold Medal Success", type: "Academic" },
+  { date: "March 2025", title: "New Computer Lab Opening", type: "Campus" },
+  { date: "February 2025", title: "Model UN Delhi Conference", type: "Extracurricular" },
+  { date: "February 2025", title: "Annual Sports Day", type: "Events" },
+  { date: "January 2025", title: "Admissions Now Open", type: "Admissions" },
+  { date: "December 2024", title: "A-Level Results: 97% Pass Rate", type: "Academic" },
+];
+
+const upcomingEvents = [
+  { date: "Feb 2026", event: "Sports Day" },
+  { date: "Aug 2026", event: "Science Exhibition" },
+  { date: "Oct 2026", event: "Cultural Day" },
+];
+---
+
+<Layout
+  title="News"
+  description="Latest news, events, and updates from Everest Academy."
+>
+  <PageHeader
+    eyebrow="Updates"
+    title="News & Events"
+    lede="Stay connected with the latest from Everest Academy."
+  />
+
+  <!-- FEATURED ARTICLE -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="rounded-2xl border border-gold bg-navy p-12 md:p-16" data-reveal>
+        <p class="eyebrow text-gold">Featured</p>
+        <h2 class="mt-4 font-display text-balance text-3xl font-bold text-cream md:text-4xl">
+          {featuredArticle.title}
+        </h2>
+        <p class="mt-4 text-cream/70">{featuredArticle.excerpt}</p>
+        <p class="mt-6 eyebrow text-cream/50">{featuredArticle.date}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST NEWS -->
+  <section class="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Latest</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Recent News</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {news.map((n) => (
+          <article class="rounded-xl border border-border bg-white p-8 transition-all hover:border-gold hover:shadow-lg" data-reveal>
+            <p class="eyebrow text-green">{n.type}</p>
+            <h3 class="mt-3 font-display text-lg font-bold text-navy">{n.title}</h3>
+            <p class="mt-2 text-sm text-muted">{n.date}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Looking Ahead</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Upcoming Events</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {upcomingEvents.map((e) => (
+          <div class="flex items-center gap-6 rounded-xl border border-border bg-white p-6" data-reveal>
+            <div class="flex flex-col items-center rounded-lg bg-navy px-4 py-3 text-center">
+              <span class="font-display text-lg font-bold text-gold">{e.date.split(' ')[0]}</span>
+              <span class="text-xs text-cream/70">{e.date.split(' ')[1]}</span>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-navy">{e.event}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="bg-navy px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-2xl text-center" data-reveal>
+      <h2 class="font-display text-4xl font-bold text-cream md:text-5xl">Stay Informed</h2>
+      <p class="mt-6 text-cream/70">
+        Subscribe to receive updates about admissions, events, and academic achievements.
+      </p>
+      <form class="mt-10 flex flex-col gap-4 sm:flex-row" onsubmit="event.preventDefault(); alert('Thank you for subscribing! We will keep you updated.');">
+        <input
+          type="email"
+          placeholder="Your email address"
+          required
+          class="flex-1 rounded-full border border-cream/20 bg-transparent px-6 py-4 text-cream placeholder:text-cream/50 focus:border-gold focus:outline-none"
+        />
+        <button
+          type="submit"
+          class="eyebrow rounded-full bg-gold px-8 py-4 text-navy transition-all hover:bg-gold-light"
+        >
+          Subscribe
+        </button>
+      </form>
+      <p class="mt-4 text-sm text-cream/50">We send one email per month. No spam.</p>
+    </div>
+  </section>
+
+  <script>
+    import { initReveal, initHeroIntro } from "../scripts/animations.js";
+    initHeroIntro();
+    initReveal();
+  </script>
+</Layout>

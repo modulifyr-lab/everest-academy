@@ -1,0 +1,147 @@
+---
+const links = [
+  { href: "/about", label: "About" },
+  { href: "/academics", label: "Academics" },
+  { href: "/admissions", label: "Admissions" },
+  { href: "/faculty", label: "Faculty" },
+  { href: "/student-life", label: "Student Life" },
+  { href: "/news", label: "News" },
+];
+---
+
+<header
+  id="site-nav"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500"
+  data-solid="false"
+>
+  <div
+    class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10"
+  >
+    <a href="/" class="group flex items-center gap-3">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="shrink-0">
+        <rect width="32" height="32" rx="6" fill="#C9973A" fill-opacity="0.15"/>
+        <path
+          d="M16 6L8 22h4l1.5-3.5L17 22h-2L16 6z"
+          stroke="#C9973A"
+          stroke-width="1.5"
+          fill="none"
+        />
+        <path
+          d="M16 6l6 16h-4L16 14l-2 8h-4L16 6z"
+          stroke="#C9973A"
+          stroke-width="1.5"
+          fill="none"
+          opacity="0.6"
+        />
+      </svg>
+      <div class="flex flex-col">
+        <span class="font-display text-lg font-bold tracking-wide text-navy">Everest Academy</span>
+        <span class="text-[10px] tracking-widest text-muted uppercase">Kathmandu, Nepal</span>
+      </div>
+    </a>
+
+    <nav class="hidden items-center gap-7 md:flex">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="eyebrow relative text-navy-mid transition-colors hover:text-navy after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a
+        href="/contact"
+        class="eyebrow hidden rounded-full bg-gold px-6 py-2.5 text-navy transition-all hover:bg-gold-light hover:shadow-lg md:inline-block"
+      >
+        Contact Us
+      </a>
+      <button
+        id="menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        class="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+      >
+        <span class="h-0.5 w-6 bg-navy transition-all" id="bar1"></span>
+        <span class="h-0.5 w-6 bg-navy transition-all" id="bar2"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 hidden flex-col justify-center bg-cream px-8"
+>
+  <nav class="flex flex-col gap-6">
+    {
+      links.concat([
+        { href: "/", label: "Home" },
+        { href: "/contact", label: "Contact" },
+      ]).map((link) => (
+        <a href={link.href} class="font-display text-4xl text-navy">
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+</div>
+
+<style>
+  header[data-solid="true"] {
+    background-color: rgba(15, 34, 64, 0.97);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  header[data-solid="true"] .font-display,
+  header[data-solid="true"] .eyebrow,
+  header[data-solid="true"] #bar1,
+  header[data-solid="true"] #bar2 {
+    color: var(--color-cream);
+  }
+
+  header[data-solid="true"] .text-\[\10px\] {
+    color: var(--color-muted);
+  }
+</style>
+
+<script>
+  const header = document.getElementById("site-nav");
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const bar1 = document.getElementById("bar1");
+  const bar2 = document.getElementById("bar2");
+
+  const onScroll = () => {
+    if (!header) return;
+    header.dataset.solid = window.scrollY > 40 ? "true" : "false";
+  };
+  document.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  let open = false;
+  toggle?.addEventListener("click", () => {
+    open = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    menu?.classList.toggle("hidden", !open);
+    menu?.classList.toggle("flex", open);
+    bar1?.style.setProperty("transform", open ? "translateY(4px) rotate(45deg)" : "none");
+    bar2?.style.setProperty("transform", open ? "translateY(-4px) rotate(-45deg)" : "none");
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      open = false;
+      toggle?.setAttribute("aria-expanded", "false");
+      menu.classList.add("hidden");
+      menu.classList.remove("flex");
+      document.body.style.overflow = "";
+    })
+  );
+</script>

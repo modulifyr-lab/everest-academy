@@ -1,0 +1,213 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const stages = [
+  {
+    name: "Early Years",
+    ages: "Ages 3–5",
+    desc: "Montessori-influenced programme building foundations for lifelong learning.",
+    max: "18 students max per class",
+    subjects: "Play-based learning, Language development, Motor skills, Social skills",
+  },
+  {
+    name: "Cambridge Primary",
+    ages: "Grades 1–5",
+    desc: "Seven core subjects with Cambridge Checkpoint assessments at Grade 5.",
+    max: "Small class sizes",
+    subjects: "English, Mathematics, Science, Social Studies, Computing, Art, PE",
+  },
+  {
+    name: "Cambridge IGCSE",
+    ages: "Grades 6–10",
+    desc: "18 subjects available. Students select 8–10 subjects. External exams in May and October.",
+    max: "Mandatory: English, Math, Science",
+    subjects: "18 subjects across Sciences, Humanities, Languages, and Arts",
+  },
+  {
+    name: "Cambridge A-Levels",
+    ages: "Grades 11–12",
+    desc: "Three streams preparing students for top universities worldwide.",
+    max: "Science, Commerce, or Humanities",
+    subjects: "University counselling from Grade 10, IELTS and SAT support",
+  },
+];
+
+const achievements = [
+  { num: "3", label: "National Medals" },
+  { num: "2", label: "MUN Conferences" },
+  { num: "1", label: "Math Competition" },
+  { num: "1", label: "Science Fair" },
+];
+
+const universities = [
+  "Kathmandu University",
+  "Tribhuvan University",
+  "University of Edinburgh",
+  "RMIT University",
+  "Purdue University",
+  "Various Indian Institutions",
+];
+---
+
+<Layout
+  title="Academics"
+  description="Explore Everest Academy's Cambridge pathway from Early Years to A-Levels with IGCSE and university counselling."
+>
+  <PageHeader
+    eyebrow="Curriculum"
+    title="A Curriculum That Opens Doors"
+    lede="The Cambridge Pathway from Early Years to A-Levels — one framework, four stages."
+  />
+
+  <!-- OVERVIEW -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="grid gap-16 md:grid-cols-2 md:items-center">
+        <div data-reveal>
+          <p class="eyebrow mb-4 text-gold">Cambridge Pathway</p>
+          <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+            One Framework, Four Stages
+          </h2>
+          <p class="mt-6 text-lg leading-relaxed text-muted">
+            Our curriculum follows the Cambridge International Education framework, providing students with a globally recognised qualification that opens doors to top universities in Nepal and abroad.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed text-muted">
+            From the play-based Early Years programme through to the rigorous A-Level examinations, each stage builds on the last, preparing students for success at every level.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-4" data-reveal>
+          {stages.map((s) => (
+            <div class="rounded-xl border border-gold/30 bg-navy p-6">
+              <p class="eyebrow text-gold/80">{s.ages}</p>
+              <h3 class="font-display text-lg font-bold text-cream">{s.name}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGES DETAIL -->
+  <section class="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16" data-reveal>
+        <p class="eyebrow mb-4 text-gold text-center">Programme Details</p>
+        <h2 class="font-display text-center text-4xl font-bold text-navy md:text-5xl">Four Stages of Excellence</h2>
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-2">
+        {stages.map((s) => (
+          <div class="rounded-2xl border border-border bg-white p-10" data-reveal>
+            <div class="mb-6 flex items-start justify-between">
+              <div>
+                <p class="eyebrow text-green">{s.ages}</p>
+                <h3 class="font-display text-3xl font-bold text-navy">{s.name}</h3>
+              </div>
+              <div class="rounded-full bg-green/10 px-4 py-2">
+                <p class="eyebrow text-green">{s.max}</p>
+              </div>
+            </div>
+            <p class="text-lg text-muted">{s.desc}</p>
+            <div class="mt-6 border-t border-border pt-6">
+              <p class="eyebrow mb-3 text-gold">Key Subjects</p>
+              <p class="text-muted">{s.subjects}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Academic Calendar</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Three Terms, One Vision</h2>
+      </div>
+
+      <div class="overflow-x-auto" data-reveal>
+        <table class="w-full min-w-[600px] border-collapse">
+          <thead>
+            <tr class="border-b-2 border-border">
+              <th class="py-4 text-left font-display text-lg font-bold text-navy">Term</th>
+              <th class="py-4 text-left font-display text-lg font-bold text-navy">Dates</th>
+              <th class="py-4 text-left font-display text-lg font-bold text-navy">Key Activities</th>
+            </tr>
+          </thead>
+          <tbody class="text-muted">
+            <tr class="border-b border-border">
+              <td class="py-4 font-medium text-navy">Term I</td>
+              <td class="py-4">April – July</td>
+              <td class="py-4">Examinations in June</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="py-4 font-medium text-navy">Term II</td>
+              <td class="py-4">August – November</td>
+              <td class="py-4">Mid-term assessments, IGCSE mock exams</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="py-4 font-medium text-navy">Term III</td>
+              <td class="py-4">December – March</td>
+              <td class="py-4">Final examinations, A-Level trials</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="bg-navy px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Beyond the Classroom</p>
+        <h2 class="font-display text-4xl font-bold text-cream md:text-5xl">Proven Excellence</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-4" data-reveal>
+        {achievements.map((a) => (
+          <div class="rounded-xl border border-gold/30 bg-navy-mid/50 p-8 text-center">
+            <p class="font-display text-5xl font-bold text-gold">{a.num}</p>
+            <p class="eyebrow mt-2 text-cream/70">{a.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIVERSITY COUNSELLING -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="grid gap-16 md:grid-cols-2 md:items-center">
+        <div data-reveal>
+          <p class="eyebrow mb-4 text-gold">University Guidance</p>
+          <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+            Your Path to Higher Education
+          </h2>
+          <p class="mt-6 text-lg leading-relaxed text-muted">
+            Our dedicated university counselling programme begins in Grade 10, helping students identify their strengths and align them with suitable university programmes worldwide.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed text-muted">
+            We provide support with personal statements, application reviews, and preparation for IELTS and SAT examinations.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-border bg-white p-10" data-reveal>
+          <p class="eyebrow mb-6 text-gold">Where Our Students Go</p>
+          <div class="flex flex-wrap gap-3">
+            {universities.map((u) => (
+              <span class="rounded-full bg-cream px-4 py-2 text-sm font-medium text-navy">{u}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { initReveal, initHeroIntro } from "../scripts/animations.js";
+    initHeroIntro();
+    initReveal();
+  </script>
+</Layout>

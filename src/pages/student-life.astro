@@ -1,0 +1,181 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const sports = [
+  { name: "Basketball", achievement: "Runners-up 2024 Inter-School Championship" },
+  { name: "Volleyball", achievement: "Inter-school Champions" },
+  { name: "Badminton", achievement: "Active recreational programme" },
+  { name: "Football", achievement: "Four age divisions, regular matches" },
+  { name: "Athletics", achievement: "School records broken in 2025" },
+  { name: "Table Tennis", achievement: "Thriving club with tournament participation" },
+];
+
+const arts = [
+  { name: "Drama Club", members: "Annual school production" },
+  { name: "Music Ensemble", members: "30 members, 2 concerts per year" },
+  { name: "Visual Arts", members: "IGCSE-level programme, annual exhibition" },
+  { name: "Dance", members: "Classical Nepali + contemporary" },
+];
+
+const clubs = [
+  { name: "Science Olympiad", achievement: "3 national medals" },
+  { name: "Math Club", achievement: "Regular competitions" },
+  { name: "Model UN", achievement: "2 conferences per year" },
+  { name: "Debate Society", achievement: "Active participation" },
+  { name: "Book Club", achievement: "Monthly meetings" },
+  { name: "Coding Club", achievement: "Project-based learning" },
+];
+
+const events = [
+  { month: "February", event: "Sports Day" },
+  { month: "August", event: "Science Exhibition" },
+  { month: "October", event: "Cultural Day" },
+  { month: "December", event: "Annual Gathering" },
+];
+---
+
+<Layout
+  title="Student Life"
+  description="Discover Everest Academy's vibrant student life with 85+ activities, 6 sports teams, and 3 performing arts groups."
+>
+  <PageHeader
+    eyebrow="Beyond Classroom"
+    title="A School, Not Just a Classroom"
+    lede="85 activities, 6 sports teams, and 3 performing arts groups — there's something for every student."
+  />
+
+  <!-- ACTIVITIES OVERVIEW -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Student Life</p>
+        <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+          Where Talents Flourish
+        </h2>
+        <p class="mt-6 text-lg text-muted">
+          At Everest Academy, learning extends far beyond the classroom. We offer over 85 activities across sports, arts, and academics, ensuring every student discovers their passion.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3" data-reveal>
+        <div class="rounded-2xl bg-navy p-10 text-center">
+          <p class="font-display text-5xl font-bold text-gold">85+</p>
+          <p class="eyebrow mt-2 text-cream/70">Activities</p>
+        </div>
+        <div class="rounded-2xl bg-navy p-10 text-center">
+          <p class="font-display text-5xl font-bold text-gold">6</p>
+          <p class="eyebrow mt-2 text-cream/70">Sports Teams</p>
+        </div>
+        <div class="rounded-2xl bg-navy p-10 text-center">
+          <p class="font-display text-5xl font-bold text-gold">3</p>
+          <p class="eyebrow mt-2 text-cream/70">Performing Arts Groups</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPORTS -->
+  <section class="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Athletics</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Sports Programme</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {sports.map((s) => (
+          <div class="rounded-xl border border-border bg-white p-8" data-reveal>
+            <h3 class="font-display text-xl font-bold text-navy">{s.name}</h3>
+            <p class="mt-2 text-muted">{s.achievement}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTS -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Creative Arts</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Arts & Culture</h2>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {arts.map((a) => (
+          <div class="rounded-xl border border-gold/30 bg-navy p-8" data-reveal>
+            <h3 class="font-display text-xl font-bold text-cream">{a.name}</h3>
+            <p class="mt-3 text-cream/70">{a.members}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CLUBS -->
+  <section class="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Clubs & Societies</p>
+        <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Academic Clubs</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {clubs.map((c) => (
+          <div class="rounded-xl border border-border bg-white p-8" data-reveal>
+            <h3 class="font-display text-lg font-bold text-navy">{c.name}</h3>
+            <p class="mt-2 text-muted">{c.achievement}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDENT COUNCIL & COMMUNITY -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="grid gap-16 md:grid-cols-2">
+        <div class="rounded-2xl border border-border bg-white p-10" data-reveal>
+          <h3 class="font-display text-2xl font-bold text-navy">Student Council</h3>
+          <p class="mt-4 text-muted">
+            12 elected student representatives who organise events, liaise with faculty, and advocate for student voice in school decisions.
+          </p>
+          <p class="mt-4 text-muted">Leadership development through democratic participation.</p>
+        </div>
+        <div class="rounded-2xl border border-green/30 bg-green/5 p-10" data-reveal>
+          <h3 class="font-display text-2xl font-bold text-navy">Community Service</h3>
+          <p class="mt-4 text-muted">
+            20+ hours per year mandatory for Grades 9–12. Activities include orphanage visits, environmental clean-ups, and rural literacy programmes.
+          </p>
+          <p class="mt-4 text-muted">Building responsible, compassionate citizens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANNUAL EVENTS -->
+  <section class="bg-navy px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Calendar</p>
+        <h2 class="font-display text-4xl font-bold text-cream md:text-5xl">Annual Events</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {events.map((e) => (
+          <div class="border-l-2 border-gold pl-6" data-reveal>
+            <p class="eyebrow text-gold">{e.month}</p>
+            <p class="font-display text-xl font-bold text-cream">{e.event}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { initReveal, initHeroIntro } from "../scripts/animations.js";
+    initHeroIntro();
+    initReveal();
+  </script>
+</Layout>

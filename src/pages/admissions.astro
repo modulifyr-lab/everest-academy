@@ -1,0 +1,194 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const steps = [
+  { num: "1", title: "Submit Application", desc: "Complete the application form and submit the last two years of school reports." },
+  { num: "2", title: "Entrance Assessment", desc: "Students undergo age-appropriate assessments in English and Mathematics. For Nursery and KG, the assessment is play-based and informal." },
+  { num: "3", title: "Enrolment & Fee Payment", desc: "Successful applicants receive an offer letter within 5 days. Confirm your place by paying the admission fee." },
+];
+
+const eligibility = [
+  { level: "Early Years", ages: "3–5 by April 1", notes: "Play-based assessment, no formal testing" },
+  { level: "Grade 1", ages: "5–6 years", notes: "Basic English preferred, interview with child" },
+  { level: "Grades 2–8", ages: "Varies", notes: "Previous reports + English proficiency assessment" },
+  { level: "IGCSE (9–10)", ages: "Completion of Grade 8", notes: "Grade 8 report + teacher recommendation" },
+  { level: "A-Level (Grade 11)", ages: "Completion of IGCSE", notes: "Minimum 5 B grades in IGCSE" },
+];
+
+const fees = [
+  { item: "Admission Fee", range: "15,000 – 25,000 NPR", note: "One-time payment" },
+  { item: "Annual Tuition", range: "1,80,000 – 2,80,000 NPR", note: "Per academic year" },
+  { item: "Cambridge Exam Fees", range: "12,000 – 18,000 NPR", note: "Per subject, at examination time" },
+  { item: "Transport (Optional)", range: "18,000 – 28,000 NPR", note: "Per academic year" },
+  { item: "Uniform", range: "4,500 – 6,000 NPR", note: "Complete set" },
+];
+
+const keyDates = [
+  { date: "March 1", event: "Applications Open" },
+  { date: "March–August", event: "Rolling Assessments" },
+  { date: "September 5", event: "Final Application Deadline" },
+  { date: "April", event: "Academic Year Begins" },
+];
+
+const faqs = [
+  { q: "Are scholarships available?", a: "Yes, merit and need-based scholarships are available. Contact our admissions office for details." },
+  { q: "Can students transfer mid-year?", a: "Transfers are considered on a case-by-case basis depending on seat availability and assessment results." },
+  { q: "Is Nepali medium education accepted?", a: "Yes, students from Nepali medium backgrounds are welcome. Additional English support is provided as needed." },
+  { q: "What documents are required?", a: "Birth certificate, previous school reports (2 years), transfer certificate (if applicable), and passport-sized photos." },
+];
+---
+
+<Layout
+  title="Admissions"
+  description="Apply to Everest Academy. Learn about our 3-step enrolment process, eligibility requirements, and fee structure."
+>
+  <PageHeader
+    eyebrow="Join Us"
+    title="Your Child's Place Starts Here"
+    lede="A three-step process to secure your child's future at Everest Academy."
+  />
+
+  <!-- PROCESS -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">How to Apply</p>
+        <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+          Three Simple Steps
+        </h2>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        {steps.map((s) => (
+          <div class="relative rounded-2xl border border-border bg-white p-10" data-reveal>
+            <div class="absolute -top-6 left-10 flex h-12 w-12 items-center justify-center rounded-full bg-gold text-navy">
+              <span class="font-display text-xl font-bold">{s.num}</span>
+            </div>
+            <div class="mt-4">
+              <h3 class="font-display text-2xl font-bold text-navy">{s.title}</h3>
+              <p class="mt-3 text-muted">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY -->
+  <section class="bg-cream px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Requirements</p>
+        <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+          Eligibility by Level
+        </h2>
+      </div>
+
+      <div class="overflow-x-auto" data-reveal>
+        <table class="w-full min-w-[600px] border-collapse rounded-xl border border-border bg-white">
+          <thead>
+            <tr class="border-b border-border bg-navy/5">
+              <th class="py-4 px-6 text-left font-display text-lg font-bold text-navy">Level</th>
+              <th class="py-4 px-6 text-left font-display text-lg font-bold text-navy">Age Requirement</th>
+              <th class="py-4 px-6 text-left font-display text-lg font-bold text-navy">Notes</th>
+            </tr>
+          </thead>
+          <tbody class="text-muted">
+            {eligibility.map((e) => (
+              <tr class="border-b border-border">
+                <td class="py-4 px-6 font-medium text-navy">{e.level}</td>
+                <td class="py-4 px-6">{e.ages}</td>
+                <td class="py-4 px-6">{e.notes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEES -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Investment</p>
+        <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+          Fee Structure
+        </h2>
+        <p class="mt-4 text-lg text-muted">All fees in Nepalese Rupees (NPR)</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {fees.map((f) => (
+          <div class="rounded-xl border border-border bg-white p-8" data-reveal>
+            <h3 class="font-display text-lg font-bold text-navy">{f.item}</h3>
+            <p class="mt-2 font-display text-2xl font-bold text-gold">{f.range}</p>
+            <p class="mt-1 text-sm text-muted">{f.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY DATES -->
+  <section class="bg-navy px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Timeline</p>
+        <h2 class="font-display text-4xl font-bold text-cream md:text-5xl">Key Dates</h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {keyDates.map((d) => (
+          <div class="border-l-2 border-gold pl-6" data-reveal>
+            <p class="font-display text-2xl font-bold text-gold">{d.date}</p>
+            <p class="mt-2 text-cream/80">{d.event}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="px-6 py-20 md:px-10 md:py-28">
+    <div class="mx-auto max-w-[1400px]">
+      <div class="mb-16 max-w-2xl" data-reveal>
+        <p class="eyebrow mb-4 text-gold">Questions</p>
+        <h2 class="font-display text-balance text-4xl font-bold text-navy md:text-5xl">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {faqs.map((f) => (
+          <div class="rounded-xl border border-border bg-white p-8" data-reveal>
+            <h3 class="font-display text-lg font-bold text-navy">{f.q}</h3>
+            <p class="mt-3 text-muted">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-green px-6 py-20 text-center md:px-10 md:py-28">
+    <div class="mx-auto max-w-2xl" data-reveal>
+      <h2 class="font-display text-balance text-4xl font-bold text-white md:text-5xl">
+        Ready to Begin?
+      </h2>
+      <p class="mt-6 text-lg text-white/80">
+        Contact our admissions team to schedule a campus visit or to start your application.
+      </p>
+      <a href="/contact" class="mt-10 inline-block rounded-full bg-gold px-10 py-4 text-navy transition-all hover:bg-gold-light hover:shadow-lg">
+        Contact Admissions
+      </a>
+    </div>
+  </section>
+
+  <script>
+    import { initReveal, initHeroIntro } from "../scripts/animations.js";
+    initHeroIntro();
+    initReveal();
+  </script>
+</Layout>

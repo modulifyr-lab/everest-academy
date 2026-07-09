@@ -1,0 +1,86 @@
+---
+const columns = [
+  {
+    heading: "Academics",
+    links: [
+      { href: "/academics", label: "Early Years" },
+      { href: "/academics", label: "Cambridge Primary" },
+      { href: "/academics", label: "IGCSE" },
+      { href: "/academics", label: "A-Levels" },
+    ],
+  },
+  {
+    heading: "Campus",
+    links: [
+      { href: "/about", label: "About Us" },
+      { href: "/faculty", label: "Our Faculty" },
+      { href: "/student-life", label: "Student Life" },
+      { href: "/news", label: "News & Events" },
+    ],
+  },
+  {
+    heading: "Admissions",
+    links: [
+      { href: "/admissions", label: "How to Apply" },
+      { href: "/admissions", label: "Fee Structure" },
+      { href: "/admissions", label: "Key Dates" },
+      { href: "/contact", label: "Contact Admissions" },
+    ],
+  },
+];
+---
+
+<footer class="border-t border-border bg-navy-dark text-cream">
+  <div class="mx-auto max-w-[1400px] px-6 py-20 md:px-10">
+    <div class="grid gap-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div>
+        <span class="font-display text-2xl font-bold text-cream">Everest Academy</span>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-cream/70">
+          World-class Cambridge education rooted in Nepali identity. Lazimpat, Kathmandu.
+        </p>
+        <p class="eyebrow mt-8 text-gold">Cambridge Certified · Est. 2003</p>
+        <p class="mt-2 text-sm text-cream/70">+977-1-444-1234</p>
+        <p class="text-sm text-cream/70">info@everestacademy.edu.np</p>
+      </div>
+
+      {
+        columns.map((col) => (
+          <div>
+            <p class="eyebrow mb-5 text-gold">{col.heading}</p>
+            <ul class="flex flex-col gap-3">
+              {col.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-sm text-cream/70 transition-colors hover:text-cream"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-16 flex flex-col-reverse items-start justify-between gap-6 border-t border-cream/10 pt-8 md:flex-row md:items-center"
+    >
+      <p class="eyebrow text-cream/50">
+        © {new Date().getFullYear()} Everest Academy. All rights reserved.
+      </p>
+      <p class="eyebrow text-cream/50">
+        Powered by
+        <a
+          href="https://modulifyr.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gold transition-colors hover:text-gold-light"
+        >
+          Modulifyr
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

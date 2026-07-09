@@ -1,70 +1,60 @@
 # Everest Academy
 
-A modern, responsive website for Everest Academy - a prestigious Cambridge International certified school in Kathmandu, Nepal.
+A Tier 2 Launch Kit demo built by Modulifyr — a fictional Cambridge-certified
+school in Kathmandu, used to demonstrate soft-animation static site
+capability for education clients.
 
-## Project Overview
+**Live scope:** 8 pages (home, about, academics, admissions, faculty, student-life, news, contact), fully responsive, no backend — in line with Launch Kit boundaries.
 
-Everest Academy provides world-class Cambridge education rooted in Nepali identity. The website features information about academic programs, admissions, faculty, student life, and news/events.
+## Stack
 
-## Tier Level: 2 (Business)
+Per `modulifyr-tech-stack-handbook-v1.1`, §2.1 (Static Website):
 
-This site is a **Tier 2 Launch Kit** (Business tier):
-- 8 pages total
-- Soft animations: scroll reveals, hover states, smooth transitions
-- Clean, professional design suitable for service businesses, professional portfolios, and small corporate sites
+| Layer | Choice |
+|---|---|
+| Framework | Astro |
+| Styling | Tailwind CSS v4 (CSS-first `@theme` tokens) |
+| Animation | GSAP + ScrollTrigger (soft: scroll reveals, hover states) |
+| Deployment target | Vercel / Cloudflare Pages |
 
-## Features
+This is a migration from the original plain HTML/CSS/JS implementation to
+the Astro stack, following the same architecture as `lantern-house`. The
+original was not a documented exception and has been corrected.
 
-- **Responsive Design**: Works on all devices from mobile to desktop
-- **Soft Animations**: Powered by GSAP for elegant transitions
-- **Sections**:
-  - Home page with hero, stats, programs, faculty, and events
-  - About Us
-  - Academics
-  - Admissions
-  - Faculty
-  - Student Life
-  - News & Events
-  - Contact Us
+## Design
 
-## Pages
+Brand and visual direction belong to the fictional client (Everest Academy),
+not Modulifyr — this demo carries its own distinct educational identity
+(Navy/Gold palette, Playfair Display + Inter typography) rather than
+Modulifyr's brand. Every page footer credits Modulifyr with a link to
+modulifyr.com.
 
-- [index.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/index.html) - Home page
-- [about.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/about.html) - About the school
-- [academics.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/academics.html) - Academic programs
-- [admissions.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/admissions.html) - Admissions information
-- [faculty.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/faculty.html) - Faculty directory
-- [student-life.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/student-life.html) - Student life and activities
-- [news.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/news.html) - News and events
-- [contact.html](file:///c:/Users/rijan/Downloads/files/everest_acadamy/contact.html) - Contact information and enquiry form
+Palette, type system, and overall visual approach are documented as design
+decisions specific to this brief — see `src/styles/global.css` for tokens.
 
-## Technologies Used
+## Structure
 
-- HTML5
-- CSS3
-- JavaScript
-- GSAP (GreenSock Animation Platform)
-- Google Fonts (Playfair Display, Inter)
+```
+src/
+  layouts/Layout.astro       shared HTML shell, fonts, nav + footer
+  components/
+    Nav.astro                 scroll-aware header, mobile menu
+    Footer.astro              sitemap + required "Powered by Modulifyr" credit
+    PageHeader.astro         shared inner-page hero header
+  scripts/animations.js       GSAP utilities: reveal, hero intro, counters
+                              reused across every page rather than duplicated
+  pages/                      8 routes
+```
 
-## Getting Started
+## Commands
 
-To view the website locally, simply open any of the HTML files in a web browser.
+```
+npm install
+npm run dev       # localhost:4321
+npm run build     # outputs to dist/
+npm run preview
+```
 
-### Browser Support
+## Sitemap (8 pages)
 
-- Chrome (recommended)
-- Firefox
-- Safari
-- Edge
-
-## School Information
-
-- **Location**: Lazimpat, Kathmandu, Nepal
-- **Established**: 2003
-- **Curriculum**: Cambridge International (IGCSE & A-Levels)
-- **Grades**: Nursery to Grade 12
-- **Language**: English Medium
-
-## License
-
-© 2025 Everest Academy, Kathmandu. All rights reserved.
+`/` `/about` `/academics` `/admissions` `/faculty` `/student-life` `/news` `/contact`
