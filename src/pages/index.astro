@@ -13,25 +13,25 @@ const programs = [
     title: "Early Years",
     ages: "Ages 3–5",
     desc: "Play-based Montessori-influenced programme building foundations for lifelong learning.",
-    href: "/academics",
+    href: "/academics#early-years",
   },
   {
     title: "Cambridge Primary",
     ages: "Grades 1–5",
     desc: "Seven core subjects with Cambridge Checkpoint assessments at Grade 5.",
-    href: "/academics",
+    href: "/academics#cambridge-primary",
   },
   {
     title: "Cambridge IGCSE",
     ages: "Grades 6–10",
     desc: "18 subjects available. External exams in May and October each year.",
-    href: "/academics",
+    href: "/academics#cambridge-igcse",
   },
   {
     title: "Cambridge A-Levels",
     ages: "Grades 11–12",
     desc: "Science, Commerce, and Humanities streams with university counselling from Grade 10.",
-    href: "/academics",
+    href: "/academics#cambridge-a-levels",
   },
 ];
 
@@ -76,25 +76,25 @@ const events = [
         <p class="eyebrow mb-6 text-gold" data-hero-line style="opacity:0">
           Cambridge Certified · IGCSE & A-Levels · Grade N–12
         </p>
-        <h1 class="font-display text-balance text-5xl font-bold leading-[0.95] text-cream md:text-7xl">
-          <span class="block overflow-hidden">
-            <span class="block" data-hero-line style="opacity:0">Where Nepal's Next</span>
+        <h1 class="font-display text-balance text-5xl font-bold leading-[1.08] text-cream md:text-7xl">
+          <span class="block overflow-hidden pb-2">
+            <span class="block pb-1" data-hero-line style="opacity:0">Where Nepal's Next</span>
           </span>
-          <span class="block overflow-hidden">
-            <span class="block text-gold" data-hero-line style="opacity:0">Generation</span>
+          <span class="block overflow-hidden pb-2">
+            <span class="block text-gold pb-1" data-hero-line style="opacity:0">Generation</span>
           </span>
-          <span class="block overflow-hidden">
-            <span class="block" data-hero-line style="opacity:0">Takes Shape</span>
+          <span class="block overflow-hidden pb-2">
+            <span class="block pb-1" data-hero-line style="opacity:0">Takes Shape</span>
           </span>
         </h1>
         <p class="mt-8 max-w-xl text-lg text-cream/80" data-hero-line style="opacity:0">
           Everest Academy provides world-class Cambridge education rooted in Nepali identity.
         </p>
         <div class="mt-10 flex flex-col gap-4 sm:flex-row" data-hero-line style="opacity:0">
-          <a href="/admissions" class="eyebrow rounded-full bg-gold px-8 py-4 text-navy transition-all hover:bg-gold-light hover:shadow-lg">
+          <a href="/admissions" class="eyebrow rounded-full bg-gold px-8 py-4 text-navy font-bold transition-all hover:bg-gold-light hover:shadow-lg">
             Apply for 2025–26
           </a>
-          <a href="/contact" class="eyebrow rounded-full border border-cream/30 px-8 py-4 text-cream transition-all hover:border-cream hover:bg-cream/10">
+          <a href="/contact" class="eyebrow rounded-full border-2 border-white px-8 py-4 text-white font-bold transition-all hover:bg-white hover:text-navy">
             Schedule a Campus Visit
           </a>
         </div>
@@ -147,11 +147,11 @@ const events = [
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         {programs.map((p) => (
-          <a href={p.href} class="group rounded-2xl border border-border bg-white p-8 transition-all hover:border-gold hover:shadow-xl" data-reveal>
+          <a href={p.href} class="group flex flex-col h-full rounded-2xl border border-border bg-white p-8 transition-all hover:border-gold hover:shadow-xl" data-reveal>
             <p class="eyebrow mb-3 text-green">{p.ages}</p>
             <h3 class="font-display text-2xl font-bold text-navy">{p.title}</h3>
             <p class="mt-3 text-muted">{p.desc}</p>
-            <p class="eyebrow mt-6 text-gold transition-transform group-hover:translate-x-2">Learn more →</p>
+            <p class="eyebrow mt-6 mt-auto pt-4 text-gold transition-transform group-hover:translate-x-2">Learn more →</p>
           </a>
         ))}
       </div>
@@ -231,19 +231,19 @@ const events = [
   </section>
 
   <!-- CTA -->
-  <section class="bg-green px-6 py-24 text-center md:px-10 md:py-32">
+  <section class="bg-navy px-6 py-24 text-center md:px-10 md:py-32">
     <div class="mx-auto max-w-2xl" data-reveal>
-      <h2 class="font-display text-balance text-4xl font-bold text-white md:text-5xl">
+      <h2 class="font-display text-balance text-4xl font-bold text-cream md:text-5xl">
         Applications Now Open for 2025–26
       </h2>
-      <p class="mt-6 text-lg text-white/80">
+      <p class="mt-6 text-lg text-cream/80">
         Give your child the foundation they deserve. Schedule a campus visit or begin the admissions process today.
       </p>
       <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href="/admissions" class="eyebrow rounded-full bg-gold px-8 py-4 text-navy transition-all hover:bg-gold-light hover:shadow-lg">
+        <a href="/admissions" class="eyebrow rounded-full bg-gold px-8 py-4 text-navy font-bold transition-all hover:bg-gold-light hover:shadow-lg">
           Apply Now
         </a>
-        <a href="/contact" class="eyebrow rounded-full border-2 border-white px-8 py-4 text-white transition-all hover:bg-white hover:text-green">
+        <a href="/contact" class="eyebrow rounded-full border-2 border-white px-8 py-4 text-white font-bold transition-all hover:bg-white hover:text-navy">
           Contact Us
         </a>
       </div>
