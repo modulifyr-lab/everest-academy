@@ -65,7 +65,7 @@ import PageHeader from "../components/PageHeader.astro";
         <h2 class="font-display text-4xl font-bold text-navy md:text-5xl">Send Us a Message</h2>
       </div>
 
-      <form class="rounded-2xl border border-border bg-white p-10" data-reveal onsubmit="event.preventDefault(); alert('Thank you for your enquiry. We will respond within 1 business day.');">
+      <form id="enquiry-form" class="rounded-2xl border border-border bg-white p-10" data-reveal novalidate>
         <div class="grid gap-6 md:grid-cols-2">
           <div>
             <label class="eyebrow mb-2 block text-navy" for="firstName">First Name</label>
@@ -99,6 +99,7 @@ import PageHeader from "../components/PageHeader.astro";
               class="w-full rounded-lg border border-border bg-cream px-4 py-3 text-navy placeholder:text-muted focus:border-gold focus:outline-none"
               placeholder="your.email@example.com"
             />
+            <p id="email-error" class="mt-1.5 hidden text-xs font-semibold text-red-600">Enter a valid email address</p>
           </div>
           <div>
             <label class="eyebrow mb-2 block text-navy" for="phone">Phone</label>
@@ -148,19 +149,19 @@ import PageHeader from "../components/PageHeader.astro";
   </section>
 
   <!-- CAMPUS VISIT CTA -->
-  <section class="bg-green px-6 py-20 text-center md:px-10 md:py-28">
+  <section class="bg-navy px-6 py-20 text-center md:px-10 md:py-28">
     <div class="mx-auto max-w-2xl" data-reveal>
-      <h2 class="font-display text-balance text-4xl font-bold text-white md:text-5xl">
+      <h2 class="font-display text-balance text-4xl font-bold text-cream md:text-5xl">
         Schedule a Campus Visit
       </h2>
-      <p class="mt-6 text-lg text-white/80">
+      <p class="mt-6 text-lg text-cream/80">
         See our facilities, meet our teachers, and experience the Everest Academy difference firsthand.
       </p>
       <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href="/admissions" class="eyebrow rounded-full bg-gold px-8 py-4 text-navy transition-all hover:bg-gold-light hover:shadow-lg">
+        <a href="/admissions" class="eyebrow rounded-full bg-gold px-8 py-4 text-navy font-bold transition-all hover:bg-gold-light hover:shadow-lg">
           Apply Now
         </a>
-        <a href="tel:+977-1-444-1234" class="eyebrow rounded-full border-2 border-white px-8 py-4 text-white transition-all hover:bg-white hover:text-green">
+        <a href="tel:+977-1-444-1234" class="eyebrow rounded-full border-2 border-white px-8 py-4 text-white font-bold transition-all hover:bg-white hover:text-navy">
           Call Us
         </a>
       </div>
@@ -171,5 +172,53 @@ import PageHeader from "../components/PageHeader.astro";
     import { initReveal, initHeroIntro } from "../scripts/animations.js";
     initHeroIntro();
     initReveal();
+
+    const form = document.getElementById("enquiry-form") as HTMLFormElement | null;
+    const emailInput = document.getElementById("email") as HTMLInputElement | null;
+    const emailError = document.getElementById("email-error") as HTMLParagraphElement | null;
+
+    const validateEmail = (email: string) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    };
+
+    if (form && emailInput && emailError) {
+      emailInput.addEventListener("input", () => {
+        if (emailError.classList.contains("hidden") === false) {
+          if (validateEmail(emailInput.value.trim())) {
+            emailError.classList.add("hidden");
+            emailInput.classList.remove("border-red-500");
+            emailInput.classList.add("border-border");
+          }
+        }
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Check native HTML5 required fields validity
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const emailValue = emailInput.value.trim();
+
+        if (!validateEmail(emailValue)) {
+          emailError.classList.remove("hidden");
+          emailInput.classList.remove("border-border");
+          emailInput.classList.add("border-red-500");
+          emailInput.focus();
+          return;
+        }
+
+        emailError.classList.add("hidden");
+        emailInput.classList.remove("border-red-500");
+        emailInput.classList.add("border-border");
+
+        alert("Thank you for your enquiry. We will respond within 1 business day.");
+        form.reset();
+      });
+    }
   </script>
 </Layout>

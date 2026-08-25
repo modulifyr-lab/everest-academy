@@ -4,6 +4,7 @@ import PageHeader from "../components/PageHeader.astro";
 
 const stages = [
   {
+    id: "early-years",
     name: "Early Years",
     ages: "Ages 3–5",
     desc: "Montessori-influenced programme building foundations for lifelong learning.",
@@ -11,6 +12,7 @@ const stages = [
     subjects: "Play-based learning, Language development, Motor skills, Social skills",
   },
   {
+    id: "cambridge-primary",
     name: "Cambridge Primary",
     ages: "Grades 1–5",
     desc: "Seven core subjects with Cambridge Checkpoint assessments at Grade 5.",
@@ -18,6 +20,7 @@ const stages = [
     subjects: "English, Mathematics, Science, Social Studies, Computing, Art, PE",
   },
   {
+    id: "cambridge-igcse",
     name: "Cambridge IGCSE",
     ages: "Grades 6–10",
     desc: "18 subjects available. Students select 8–10 subjects. External exams in May and October.",
@@ -25,6 +28,7 @@ const stages = [
     subjects: "18 subjects across Sciences, Humanities, Languages, and Arts",
   },
   {
+    id: "cambridge-a-levels",
     name: "Cambridge A-Levels",
     ages: "Grades 11–12",
     desc: "Three streams preparing students for top universities worldwide.",
@@ -98,7 +102,7 @@ const universities = [
 
       <div class="grid gap-8 lg:grid-cols-2">
         {stages.map((s) => (
-          <div class="rounded-2xl border border-border bg-white p-10" data-reveal>
+          <div id={s.id} class="scroll-mt-28 rounded-2xl border border-border bg-white p-10" data-reveal>
             <div class="mb-6 flex items-start justify-between">
               <div>
                 <p class="eyebrow text-green">{s.ages}</p>
