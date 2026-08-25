@@ -55,7 +55,6 @@
     letter-spacing: var(--tracking-wider-lg);
     text-transform: uppercase;
     font-size: 0.7rem;
-    color: var(--color-gold);
   }
 
   .text-balance { text-wrap: balance; }
